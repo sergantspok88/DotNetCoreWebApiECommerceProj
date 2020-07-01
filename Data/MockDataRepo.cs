@@ -29,6 +29,12 @@ namespace ecommwebapi.Data
                     Description = "GPU card Nvidia RTX 3080Ti",
                     Price = 1200
                 },
+                new Product{
+                    Id = 4,
+                    Name = "RTX 2080Ti",
+                    Description = "GPU card Nvidia RTX 2080Ti",
+                    Price = 900
+                },
             };
         }
 

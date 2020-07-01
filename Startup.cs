@@ -17,6 +17,8 @@ namespace ecommwebapi
 {
     public class Startup
     {
+        private string corsPolicyAllowAll = "AllowAllHeaders";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +29,18 @@ namespace ecommwebapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //This ideally should be changed for more specific permissions
+            services.AddCors(options =>
+            {
+                options.AddPolicy(corsPolicyAllowAll,
+                    builder =>
+                {
+                    builder.AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                });
+            });
+
             services.AddControllers();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -45,6 +59,8 @@ namespace ecommwebapi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(corsPolicyAllowAll);
 
             app.UseAuthorization();
 
