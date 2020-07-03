@@ -1,6 +1,8 @@
 using AutoMapper;
+using ecommwebapi.Data;
 using ecommwebapi.Data.Dtos;
 using ecommwebapi.Data.Models;
+using ecommwebapi.Models;
 
 namespace ecommwebapi.Profiles
 {
@@ -9,6 +11,10 @@ namespace ecommwebapi.Profiles
         public DataProfiles()
         {
             CreateMap<Product, ProductReadDto>().ReverseMap();
+            CreateMap<RegisterModel, User>().ReverseMap();
+            CreateMap<UpdateModel, User>().ReverseMap();
+            CreateMap<UserReadDto, User>().ReverseMap();
+            CreateMap<UserAuthenticateReadDto, User>().ReverseMap();
         }
     }
 }

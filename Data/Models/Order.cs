@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ecommwebapi.Models;
 
 namespace ecommwebapi.Data.Models
 {
@@ -7,8 +8,9 @@ namespace ecommwebapi.Data.Models
     {
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
-        public string OrderNumber { get; set; }    
-        public StoreUser User { get; set; }
+        public string OrderNumber { get; set; }
+        //public StoreUser User { get; set; }
+        public User User { get; set; }
         public ICollection<OrderItem> Items { get; set; }
 
     }

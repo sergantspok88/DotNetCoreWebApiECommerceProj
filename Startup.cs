@@ -55,14 +55,17 @@ namespace ecommwebapi
             //configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            services.AddAuthentication(x => {
+            services.AddAuthentication(x =>
+            {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(x =>{
+            .AddJwtBearer(x =>
+            {
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters{
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
@@ -75,7 +78,10 @@ namespace ecommwebapi
             services.AddScoped<IDataRepo, MockDataRepo>();
 
             //configure DI for application services
-            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IUserRepo, MockUserRepo>();
+            //User singleton because otherwise scoped would reinit our mock data per each request.
+            //Would not be a problem for actual DB repo.
+            services.AddSingleton<IUserRepo, MockUserRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
