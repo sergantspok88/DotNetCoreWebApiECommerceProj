@@ -132,6 +132,12 @@ namespace ecommwebapi.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
+            //autoincrement id like in database
+            user.Id = _users.Max(u => u.Id) + 1;
+            
+            //default role will be user
+            user.Role = Role.User;
+
             _users.Add(user);
 
             //return user;

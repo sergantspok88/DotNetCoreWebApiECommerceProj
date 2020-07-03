@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using ecommwebapi.Helpers;
 using ecommwebapi.Models;
+using ecommwebapi.Data.Dtos;
 
 namespace ecommwebapi.Controllers
 {
@@ -40,7 +41,7 @@ namespace ecommwebapi.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterModel model)
+        public IActionResult Register([FromBody] UserRegisterWriteDto model)
         {
             var user = mapper.Map<User>(model);
 
@@ -85,7 +86,7 @@ namespace ecommwebapi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] UpdateModel model)
+        public IActionResult Update(int id, [FromBody] UserUpdateWriteDto model)
         {
             //users can update only themselves, admins can anybody
             var currentUserId = int.Parse(User.Identity.Name);

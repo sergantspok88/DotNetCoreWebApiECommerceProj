@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ecommwebapi.Data.Models
+namespace ecommwebapi.Data.Dtos
 {
-    public class RegisterModel
+    public class UserRegisterWriteDto
     {
         [Required]
         public string FirstName { get; set; }

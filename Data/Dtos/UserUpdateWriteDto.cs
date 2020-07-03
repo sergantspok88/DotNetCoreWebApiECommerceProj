@@ -1,6 +1,6 @@
-namespace ecommwebapi.Data.Models
+namespace ecommwebapi.Data.Dtos
 {
-    public class UpdateModel
+    public class UserUpdateWriteDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
