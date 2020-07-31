@@ -10,5 +10,6 @@ namespace ecommwebapi.Services{
         UserReadDto Create(User user, string password);
         void Update(User user, string password);
         void Delete(int id);
+        bool SaveAll();
     }
 }

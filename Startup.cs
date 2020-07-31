@@ -17,6 +17,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace ecommwebapi
 {
@@ -30,6 +34,8 @@ namespace ecommwebapi
         }
 
         public IConfiguration Configuration { get; }
+
+        //private DbConnection _connection;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -73,16 +79,45 @@ namespace ecommwebapi
                 };
             });
 
+            services.AddTransient<UserSeeder>();
+
+            // services.AddDbContext<IUserContext, MockUserContext>(
+            //     options => options.UseInMemoryDatabase(databaseName: "estore-test")
+            //     );
+
+            services.AddDbContext<IUserContext, MockUserContext>(cfg =>
+                {
+                    //cfg.UseSqlite("Filename=:memory:");
+                    cfg.UseSqlite(CreateInMemoryDatabase());
+                    //cfg.UseSqlite("DataSource=file::memory:");
+                }, ServiceLifetime.Singleton, ServiceLifetime.Singleton
+            );
+            //_connection = RelationalOptionsExtension.Extract(ContextOptions).Connection;
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IDataRepo, MockDataRepo>();
 
             //configure DI for application services
-            //services.AddScoped<IUserRepo, MockUserRepo>();
+            services.AddScoped<IUserRepo, MockUserRepo>();
             //User singleton because otherwise scoped would reinit our mock data per each request.
             //Would not be a problem for actual DB repo.
-            services.AddSingleton<IUserRepo, MockUserRepo>();
+            //services.AddSingleton<IUserRepo, MockUserRepo>();
         }
+
+        //https://github.com/dotnet/efcore/issues/4922
+        //https://github.com/dotnet/efcore/issues/7924
+        //https://docs.microsoft.com/en-us/ef/core/miscellaneous/testing/sqlite#writing-tests
+        private static DbConnection CreateInMemoryDatabase()
+        {
+            var connection = new SqliteConnection("Filename=:memory:");
+
+            connection.Open();
+
+            return connection;
+        }
+
+        //public void Dispose() => _connection.Dispose();
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
