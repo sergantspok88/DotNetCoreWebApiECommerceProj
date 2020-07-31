@@ -81,11 +81,12 @@ namespace ecommwebapi
 
             services.AddTransient<UserSeeder>();
 
-            // services.AddDbContext<IUserContext, MockUserContext>(
+            //use in memory db context - but using sqlite in memory should be closer to real databases
+            // services.AddDbContext<IUserContext, kUserContext>(
             //     options => options.UseInMemoryDatabase(databaseName: "estore-test")
             //     );
 
-            services.AddDbContext<IUserContext, MockUserContext>(cfg =>
+            services.AddDbContext<IUserContext, UserContext>(cfg =>
                 {
                     //cfg.UseSqlite("Filename=:memory:");
                     cfg.UseSqlite(CreateInMemoryDatabase());
@@ -99,7 +100,7 @@ namespace ecommwebapi
             services.AddScoped<IDataRepo, MockDataRepo>();
 
             //configure DI for application services
-            services.AddScoped<IUserRepo, MockUserRepo>();
+            services.AddScoped<IUserRepo, UserRepo>();
             //User singleton because otherwise scoped would reinit our mock data per each request.
             //Would not be a problem for actual DB repo.
             //services.AddSingleton<IUserRepo, MockUserRepo>();

@@ -16,64 +16,22 @@ using ecommwebapi.Data.Dtos;
 
 namespace ecommwebapi.Services
 {
-    public class MockUserRepo : IUserRepo
+    public class UserRepo : IUserRepo
     {
-        //private List<User> _users;
         private readonly IUserContext ctx;
-
         private readonly AppSettings _appSettings;
         private readonly IMapper mapper;
 
-        //!!! with new ctx should maybe rename from MockUserRepo to just UserRepo
-        //- because can now switch context to mock and this repo is on higher abstraction level
-        public MockUserRepo(IUserContext ctx, IOptions<AppSettings> appSettings,
+        public UserRepo(IUserContext ctx, IOptions<AppSettings> appSettings,
             IMapper mapper)
         {
-            //Console.WriteLine("MockUserRepo ctor called");
             this.ctx = ctx;
-
-            _appSettings = appSettings.Value;
-
-            //InitData();
+            this._appSettings = appSettings.Value;
             this.mapper = mapper;
         }
 
-        // private void InitData(){
-        //     _users = new List<User>();
-        //     byte[] passwordHash;
-        //     byte[] passwordSalt;
-        //     CreatePasswordHashAndSalt("admin", out passwordHash, out passwordSalt);
-        //     _users.Add(new User{
-        //         Id = 1, 
-        //         FirstName = "Admin",
-        //         LastName = "User",
-        //         Username = "admin",
-        //         PasswordHash = passwordHash,
-        //         PasswordSalt = passwordSalt,
-        //         Role = Role.Admin
-        //     });
-
-        //     CreatePasswordHashAndSalt("user", out passwordHash, out passwordSalt);
-        //     _users.Add(new User
-        //     {
-        //         Id = 2,
-        //         FirstName = "Normal",
-        //         LastName = "User",
-        //         Username = "user",
-        //         PasswordHash = passwordHash,
-        //         PasswordSalt = passwordSalt,
-        //         Role = Role.User
-        //     });
-        // }
-
         public UserAuthenticateReadDto Authenticate(string username, string password)
         {
-            // Console.WriteLine($"username: {username} password: {password}");
-            // Console.WriteLine("All users:");
-            // foreach (var item in ctx.Users)
-            // {
-            //     Console.WriteLine($"username {item.Username}  password {item.PasswordHash}");
-            // }
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 return null;
@@ -81,9 +39,6 @@ namespace ecommwebapi.Services
 
             var user = ctx.Users.SingleOrDefault(x => x.Username == username);
 
-            //Console.WriteLine(JsonSerializer.Serialize(user));
-
-            //return null if user not found
             if (user == null)
             {
                 return null;
@@ -110,20 +65,17 @@ namespace ecommwebapi.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
 
-            //return user.WithoutPasswordData();
             return mapper.Map<UserAuthenticateReadDto>(user);
         }
 
         public IEnumerable<UserReadDto> GetAll()
         {
-            //return _users.WithoutPasswordData();
             return mapper.Map<IEnumerable<User>, IEnumerable<UserReadDto>>(ctx.Users);
         }
 
         public UserReadDto GetById(int id)
         {
             var user = ctx.Users.FirstOrDefault(x => x.Id == id);
-            //return user.WithoutPasswordData();
             return mapper.Map<UserReadDto>(user);
         }
 
@@ -149,6 +101,7 @@ namespace ecommwebapi.Services
             user.Role = Role.User;
 
             ctx.Users.Add(user);
+            ctx.SaveChanges();
 
             //return user;
             return mapper.Map<UserReadDto>(user);
@@ -193,6 +146,7 @@ namespace ecommwebapi.Services
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
             }
+            ctx.SaveChanges();
         }
 
         public void Delete(int id){
@@ -201,6 +155,7 @@ namespace ecommwebapi.Services
             if (user != null)
             {
                 ctx.Users.Remove(user);
+                ctx.SaveChanges();
             }
         }
 

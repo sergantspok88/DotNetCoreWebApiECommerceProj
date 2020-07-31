@@ -4,9 +4,6 @@ namespace ecommwebapi.Data
 {
     public static class RepoUtility
     {
-
-        //private helper methods
-
         public static void CreatePasswordHashAndSalt(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             if (password == null)

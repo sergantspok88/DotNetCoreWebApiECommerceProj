@@ -8,8 +8,8 @@ using ecommwebapi.Data;
 
 namespace ecommwebapi.Migrations
 {
-    [DbContext(typeof(MockUserContext))]
-    [Migration("20200729162145_InitialCreate")]
+    [DbContext(typeof(UserContext))]
+    [Migration("20200731152157_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

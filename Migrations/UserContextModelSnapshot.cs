@@ -7,8 +7,8 @@ using ecommwebapi.Data;
 
 namespace ecommwebapi.Migrations
 {
-    [DbContext(typeof(MockUserContext))]
-    partial class MockUserContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(UserContext))]
+    partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
