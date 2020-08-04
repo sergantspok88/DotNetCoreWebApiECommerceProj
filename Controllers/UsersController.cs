@@ -1,27 +1,27 @@
-using ecommwebapi.Data.Models;
-using ecommwebapi.Services;
-using ecommwebapi.Entities;
+using Ecommwebapi.Data.Models;
+using Ecommwebapi.Services;
+using Ecommwebapi.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
-using ecommwebapi.Helpers;
-using ecommwebapi.Models;
-using ecommwebapi.Data.Dtos;
+using Ecommwebapi.Helpers;
+using Ecommwebapi.Models;
+using Ecommwebapi.Data.Dtos;
 
-namespace ecommwebapi.Controllers
+namespace Ecommwebapi.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
-        private IUserRepo _userService;
+        private IUserService userService;
         private readonly IMapper mapper;
 
-        public UsersController(IUserRepo userService,
+        public UsersController(IUserService userService,
             IMapper mapper)
         {
-            _userService = userService;
+            this.userService = userService;
             this.mapper = mapper;
         }
 
@@ -29,7 +29,7 @@ namespace ecommwebapi.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthenticateModel model)
         {
-            var user = _userService.Authenticate(model.Username, model.Password);
+            var user = userService.Authenticate(model.Username, model.Password);
 
             if (user == null)
             {
@@ -48,7 +48,7 @@ namespace ecommwebapi.Controllers
             try
             {
                 //create user
-                var newUser = _userService.Create(user, model.Password);
+                var newUser = userService.Create(user, model.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -61,7 +61,7 @@ namespace ecommwebapi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAll();
+            var users = userService.GetAll();
             return Ok(users);
         }
 
@@ -75,7 +75,7 @@ namespace ecommwebapi.Controllers
                 return Forbid();
             }
 
-            var user = _userService.GetById(id);
+            var user = userService.GetById(id);
 
             if (user == null)
             {
@@ -100,7 +100,7 @@ namespace ecommwebapi.Controllers
 
             try
             {
-                _userService.Update(user, model.Password);
+                userService.Update(user, model.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -113,7 +113,7 @@ namespace ecommwebapi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _userService.Delete(id);
+            userService.Delete(id);
             return Ok();
         }
     }

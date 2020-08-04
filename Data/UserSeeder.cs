@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using ecommwebapi.Entities;
-using ecommwebapi.Models;
+using Ecommwebapi.Entities;
+using Ecommwebapi.Models;
 using System;
 
-namespace ecommwebapi.Data
+namespace Ecommwebapi.Data
 {
     public class UserSeeder
     {
@@ -14,7 +14,8 @@ namespace ecommwebapi.Data
             this.ctx = ctx;
         }
 
-        public void Seed(){
+        public void Seed()
+        {
             ctx.EnsureCreated();
 
             byte[] passwordHash;

@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ecommwebapi.Data.Dtos
+namespace Ecommwebapi.Data.Dtos
 {
     public class UserRegisterWriteDto
     {
         [Required]
         public string FirstName { get; set; }
-        
+
         [Required]
         public string LastName { get; set; }
 

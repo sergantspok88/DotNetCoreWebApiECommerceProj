@@ -1,4 +1,4 @@
-namespace ecommwebapi.Entities
+namespace Ecommwebapi.Entities
 {
     public static class Role
     {

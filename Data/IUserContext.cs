@@ -1,7 +1,7 @@
-using ecommwebapi.Models;
+using Ecommwebapi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ecommwebapi.Data
+namespace Ecommwebapi.Data
 {
     public interface IUserContext
     {

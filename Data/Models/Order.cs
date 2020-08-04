@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ecommwebapi.Models;
+using Ecommwebapi.Models;
 
-namespace ecommwebapi.Data.Models
+namespace Ecommwebapi.Data.Models
 {
     public class Order
     {
@@ -12,6 +12,5 @@ namespace ecommwebapi.Data.Models
         //public StoreUser User { get; set; }
         public User User { get; set; }
         public ICollection<OrderItem> Items { get; set; }
-
     }
 }

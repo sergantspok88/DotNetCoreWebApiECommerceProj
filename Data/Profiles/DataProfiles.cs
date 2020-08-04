@@ -1,9 +1,9 @@
 using AutoMapper;
-using ecommwebapi.Data.Dtos;
-using ecommwebapi.Data.Models;
-using ecommwebapi.Models;
+using Ecommwebapi.Data.Dtos;
+using Ecommwebapi.Data.Models;
+using Ecommwebapi.Models;
 
-namespace ecommwebapi.Profiles
+namespace Ecommwebapi.Profiles
 {
     public class DataProfiles : Profile
     {

@@ -1,8 +1,8 @@
-using ecommwebapi.Entities;
-using ecommwebapi.Models;
+using Ecommwebapi.Entities;
+using Ecommwebapi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ecommwebapi.Data
+namespace Ecommwebapi.Data
 {
     public class UserContext : DbContext, IUserContext
     {
@@ -21,7 +21,8 @@ namespace ecommwebapi.Data
             return base.SaveChanges();
         }
 
-        public bool EnsureCreated(){
+        public bool EnsureCreated()
+        {
             return Database.EnsureCreated();
         }
     }

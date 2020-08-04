@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using ecommwebapi.Data.Models;
+using Ecommwebapi.Data.Models;
 using System.Linq;
 
-namespace ecommwebapi.Data
+namespace Ecommwebapi.Data
 {
-    public class MockDataRepo : IDataRepo
+    public class MockDataService : IDataService
     {
         private List<Product> products;
 
-        public MockDataRepo()
+        public MockDataService()
         {
             products = new List<Product>(){
                 new Product{

@@ -1,4 +1,4 @@
-namespace ecommwebapi.Data.Models
+namespace Ecommwebapi.Data.Models
 {
     public class OrderItem
     {

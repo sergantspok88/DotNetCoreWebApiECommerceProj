@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using ecommwebapi.Data;
-using ecommwebapi.Helpers;
-using ecommwebapi.Services;
+using Ecommwebapi.Data;
+using Ecommwebapi.Helpers;
+using Ecommwebapi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +22,7 @@ using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace ecommwebapi
+namespace Ecommwebapi
 {
     public class Startup
     {
@@ -82,7 +82,7 @@ namespace ecommwebapi
             services.AddTransient<UserSeeder>();
 
             //use in memory db context - but using sqlite in memory should be closer to real databases
-            // services.AddDbContext<IUserContext, kUserContext>(
+            // services.AddDbContext<IUserContext, UserContext>(
             //     options => options.UseInMemoryDatabase(databaseName: "estore-test")
             //     );
 
@@ -97,10 +97,10 @@ namespace ecommwebapi
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IDataRepo, MockDataRepo>();
+            services.AddScoped<IDataService, MockDataService>();
 
             //configure DI for application services
-            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IUserService, UserService>();
             //User singleton because otherwise scoped would reinit our mock data per each request.
             //Would not be a problem for actual DB repo.
             //services.AddSingleton<IUserRepo, MockUserRepo>();

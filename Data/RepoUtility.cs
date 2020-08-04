@@ -1,6 +1,6 @@
 using System;
 
-namespace ecommwebapi.Data
+namespace Ecommwebapi.Data
 {
     public static class RepoUtility
     {

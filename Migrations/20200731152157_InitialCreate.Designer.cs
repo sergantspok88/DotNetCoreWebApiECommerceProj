@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ecommwebapi.Data;
+using Ecommwebapi.Data;
 
-namespace ecommwebapi.Migrations
+namespace Ecommwebapi.Migrations
 {
     [DbContext(typeof(UserContext))]
     [Migration("20200731152157_InitialCreate")]

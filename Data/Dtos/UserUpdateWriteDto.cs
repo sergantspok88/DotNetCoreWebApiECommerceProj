@@ -1,4 +1,4 @@
-namespace ecommwebapi.Data.Dtos
+namespace Ecommwebapi.Data.Dtos
 {
     public class UserUpdateWriteDto
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using ecommwebapi.Entities;
-using ecommwebapi.Helpers;
+using Ecommwebapi.Entities;
+using Ecommwebapi.Helpers;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
@@ -9,24 +9,24 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System;
 using System.Text.Json;
-using ecommwebapi.Models;
+using Ecommwebapi.Models;
 using AutoMapper;
-using ecommwebapi.Data;
-using ecommwebapi.Data.Dtos;
+using Ecommwebapi.Data;
+using Ecommwebapi.Data.Dtos;
 
-namespace ecommwebapi.Services
+namespace Ecommwebapi.Services
 {
-    public class UserRepo : IUserRepo
+    public class UserService : IUserService
     {
         private readonly IUserContext ctx;
-        private readonly AppSettings _appSettings;
+        private readonly AppSettings appSettings;
         private readonly IMapper mapper;
 
-        public UserRepo(IUserContext ctx, IOptions<AppSettings> appSettings,
+        public UserService(IUserContext ctx, IOptions<AppSettings> appSettings,
             IMapper mapper)
         {
             this.ctx = ctx;
-            this._appSettings = appSettings.Value;
+            this.appSettings = appSettings.Value;
             this.mapper = mapper;
         }
 
@@ -44,13 +44,14 @@ namespace ecommwebapi.Services
                 return null;
             }
 
-            if(!RepoUtility.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)){
+            if (!RepoUtility.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            {
                 return null;
             }
 
             //authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]{
@@ -79,12 +80,15 @@ namespace ecommwebapi.Services
             return mapper.Map<UserReadDto>(user);
         }
 
-        public UserReadDto Create(User user, string password){
-            if(string.IsNullOrWhiteSpace(password)){
+        public UserReadDto Create(User user, string password)
+        {
+            if (string.IsNullOrWhiteSpace(password))
+            {
                 throw new AppException("Password is required");
             }
 
-            if(ctx.Users.Any(x => x.Username == user.Username)){
+            if (ctx.Users.Any(x => x.Username == user.Username))
+            {
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
             }
 
@@ -96,7 +100,7 @@ namespace ecommwebapi.Services
 
             //autoincrement id like in database
             user.Id = ctx.Users.Max(u => u.Id) + 1;
-            
+
             //default role will be user
             user.Role = Role.User;
 
@@ -107,7 +111,8 @@ namespace ecommwebapi.Services
             return mapper.Map<UserReadDto>(user);
         }
 
-        public void Update(User userParam, string password = null){
+        public void Update(User userParam, string password = null)
+        {
             var user = ctx.Users.SingleOrDefault(x => x.Id == userParam.Id);
 
             if (user == null)
@@ -119,7 +124,8 @@ namespace ecommwebapi.Services
             if (!string.IsNullOrWhiteSpace(userParam.Username) && userParam.Username != user.Username)
             {
                 //throw error if the new username is already taken
-                if(ctx.Users.Any(x => x.Username == userParam.Username)){
+                if (ctx.Users.Any(x => x.Username == userParam.Username))
+                {
                     throw new AppException("Username " + userParam.Username + " is already taken");
                 }
 
@@ -149,7 +155,8 @@ namespace ecommwebapi.Services
             ctx.SaveChanges();
         }
 
-        public void Delete(int id){
+        public void Delete(int id)
+        {
             var user = ctx.Users.SingleOrDefault(x => x.Id == id);
 
             if (user != null)
@@ -159,7 +166,8 @@ namespace ecommwebapi.Services
             }
         }
 
-        public bool SaveAll(){
+        public bool SaveAll()
+        {
             return ctx.SaveChanges() > 0;
         }
     }

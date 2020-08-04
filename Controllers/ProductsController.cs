@@ -1,20 +1,20 @@
 using System.Collections.Generic;
-using ecommwebapi.Data;
-using ecommwebapi.Data.Models;
-using ecommwebapi.Data.Dtos;
+using Ecommwebapi.Data;
+using Ecommwebapi.Data.Models;
+using Ecommwebapi.Data.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
-namespace ecommwebapi.Controllers
+namespace Ecommwebapi.Controllers
 {
     [Route("api/products")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IDataRepo repo;
+        private readonly IDataService repo;
         private readonly IMapper mapper;
 
-        public ProductsController(IDataRepo repo,
+        public ProductsController(IDataService repo,
             IMapper mapper)
         {
             this.mapper = mapper;

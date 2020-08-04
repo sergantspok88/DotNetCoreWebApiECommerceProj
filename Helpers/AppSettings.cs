@@ -1,4 +1,4 @@
-namespace ecommwebapi.Helpers
+namespace Ecommwebapi.Helpers
 {
     public class AppSettings
     {

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
-using ecommwebapi.Data.Dtos;
-using ecommwebapi.Models;
+using Ecommwebapi.Data.Dtos;
+using Ecommwebapi.Models;
 
-namespace ecommwebapi.Services{
-    public interface IUserRepo{
+namespace Ecommwebapi.Services
+{
+    public interface IUserService
+    {
         UserAuthenticateReadDto Authenticate(string username, string password);
         IEnumerable<UserReadDto> GetAll();
         UserReadDto GetById(int id);
