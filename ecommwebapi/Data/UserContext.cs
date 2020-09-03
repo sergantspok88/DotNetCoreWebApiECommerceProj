@@ -1,6 +1,7 @@
 using Ecommwebapi.Entities;
 using Ecommwebapi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Ecommwebapi.Data
 {
@@ -8,6 +9,7 @@ namespace Ecommwebapi.Data
     {
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
+
         }
 
         public DbSet<User> Users { get; set; }
@@ -23,7 +25,14 @@ namespace Ecommwebapi.Data
 
         public bool EnsureCreated()
         {
-            return Database.EnsureCreated();
+            //return Database.EnsureCreated();
+            //Migrate should do everything that EnsureCreated does
+            //and additionaly handle migrations
+            if (Database.GetPendingMigrations().Any())
+            {
+                Database.Migrate();
+            }
+            return true;
         }
     }
 }

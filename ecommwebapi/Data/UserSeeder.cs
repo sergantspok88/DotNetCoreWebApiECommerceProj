@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Ecommwebapi.Entities;
 using Ecommwebapi.Models;
 using System;
+using System.Linq;
 
 namespace Ecommwebapi.Data
 {
@@ -18,33 +19,36 @@ namespace Ecommwebapi.Data
         {
             ctx.EnsureCreated();
 
-            byte[] passwordHash;
-            byte[] passwordSalt;
-            RepoUtility.CreatePasswordHashAndSalt("admin", out passwordHash, out passwordSalt);
-            ctx.Users.Add(new User
+            if (!ctx.Users.Any())
             {
-                Id = 1,
-                FirstName = "Admin",
-                LastName = "User",
-                Username = "admin",
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Role = Role.Admin
-            });
+                byte[] passwordHash;
+                byte[] passwordSalt;
+                RepoUtility.CreatePasswordHashAndSalt("admin", out passwordHash, out passwordSalt);
+                ctx.Users.Add(new User
+                {
+                    Id = 1,
+                    FirstName = "Admin",
+                    LastName = "User",
+                    Username = "admin",
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Role = Role.Admin
+                });
 
-            RepoUtility.CreatePasswordHashAndSalt("user", out passwordHash, out passwordSalt);
-            ctx.Users.Add(new User
-            {
-                Id = 2,
-                FirstName = "Normal",
-                LastName = "User",
-                Username = "user",
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Role = Role.User
-            });
+                RepoUtility.CreatePasswordHashAndSalt("user", out passwordHash, out passwordSalt);
+                ctx.Users.Add(new User
+                {
+                    Id = 2,
+                    FirstName = "Normal",
+                    LastName = "User",
+                    Username = "user",
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Role = Role.User
+                });
 
-            ctx.SaveChanges();
+                ctx.SaveChanges();
+            }
         }
     }
 }

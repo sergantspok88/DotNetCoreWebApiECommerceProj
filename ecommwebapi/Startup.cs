@@ -116,7 +116,7 @@ namespace Ecommwebapi
             services.AddSwaggerGen(options => 
             { 
                 options.SwaggerDoc(name: "v1", info: 
-                    new OpenApiInfo { Title = "Northwind Service API", Version = "v1" }); 
+                    new OpenApiInfo { Title = "ECommWebAPI", Version = "v1" }); 
             });
 
         }
