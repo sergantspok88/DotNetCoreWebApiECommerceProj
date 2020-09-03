@@ -21,6 +21,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using Microsoft.OpenApi.Models;
 
 namespace Ecommwebapi
 {
@@ -33,7 +36,10 @@ namespace Ecommwebapi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration
+        {
+            get;
+        }
 
         //private DbConnection _connection;
 
@@ -104,6 +110,15 @@ namespace Ecommwebapi
             //User singleton because otherwise scoped would reinit our mock data per each request.
             //Would not be a problem for actual DB repo.
             //services.AddSingleton<IUserRepo, MockUserRepo>();
+
+            // Register the Swagger generator and define a Swagger document 
+            // for Northwind service 
+            services.AddSwaggerGen(options => 
+            { 
+                options.SwaggerDoc(name: "v1", info: 
+                    new OpenApiInfo { Title = "Northwind Service API", Version = "v1" }); 
+            });
+
         }
 
         //https://github.com/dotnet/efcore/issues/4922
@@ -140,6 +155,15 @@ namespace Ecommwebapi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", 
+                    "ECommWebAPI Version 1");
+                options.SupportedSubmitMethods(new[] 
+                    { SubmitMethod.Get, SubmitMethod.Post, 
+                      SubmitMethod.Put, SubmitMethod.Delete });
             });
         }
     }
