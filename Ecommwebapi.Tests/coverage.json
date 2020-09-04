@@ -1,0 +1,1913 @@
+{
+  "ecommwebapi.dll": {
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Program.cs": {
+      "Ecommwebapi.Program": {
+        "System.Void Ecommwebapi.Program::Main(System.String[])": {
+          "Lines": {
+            "17": 0,
+            "19": 0,
+            "21": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Program::RunSeeding(Microsoft.Extensions.Hosting.IHost)": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Hosting.IHostBuilder Ecommwebapi.Program::CreateHostBuilder(System.String[])": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Startup.cs": {
+      "Ecommwebapi.Startup": {
+        "Microsoft.Extensions.Configuration.IConfiguration Ecommwebapi.Startup::get_Configuration()": {
+          "Lines": {
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Startup::ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "61": 0,
+            "64": 0,
+            "65": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "88": 0,
+            "89": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "105": 0,
+            "109": 0,
+            "110": 0,
+            "113": 0,
+            "114": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "127": 0
+          },
+          "Branches": []
+        },
+        "System.Data.Common.DbConnection Ecommwebapi.Startup::CreateInMemoryDatabase()": {
+          "Lines": {
+            "133": 0,
+            "134": 0,
+            "136": 0,
+            "138": 0,
+            "139": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Startup::Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)": {
+          "Lines": {
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "149": 0,
+            "151": 0,
+            "153": 0,
+            "155": 0,
+            "157": 0,
+            "158": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "163": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0
+          },
+          "Branches": [
+            {
+              "Line": 146,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 146,
+              "Offset": 9,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Startup::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "32": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Migrations\\20200903200846_InitialCreate.cs": {
+      "Ecommwebapi.Migrations.InitialCreate": {
+        "System.Void Ecommwebapi.Migrations.InitialCreate::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Migrations.InitialCreate::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Migrations\\20200903200846_InitialCreate.Designer.cs": {
+      "Ecommwebapi.Migrations.InitialCreate": {
+        "System.Void Ecommwebapi.Migrations.InitialCreate::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "74": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Migrations\\DataContextModelSnapshot.cs": {
+      "Ecommwebapi.Migrations.DataContextModelSnapshot": {
+        "System.Void Ecommwebapi.Migrations.DataContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "14": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "72": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Helpers\\AppException.cs": {
+      "Ecommwebapi.Helpers.AppException": {
+        "System.Void Ecommwebapi.Helpers.AppException::.ctor()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Helpers.AppException::.ctor(System.String)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Helpers.AppException::.ctor(System.String,System.Object[])": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Helpers\\AppSettings.cs": {
+      "Ecommwebapi.Helpers.AppSettings": {
+        "System.String Ecommwebapi.Helpers.AppSettings::get_Secret()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Profiles\\DataProfiles.cs": {
+      "Ecommwebapi.Profiles.DataProfiles": {
+        "System.Void Ecommwebapi.Profiles.DataProfiles::.ctor()": {
+          "Lines": {
+            "9": 1,
+            "10": 1,
+            "11": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\UserService.cs": {
+      "Ecommwebapi.Services.UserService": {
+        "Ecommwebapi.Data.Dtos.UserAuthenticateReadDto Ecommwebapi.Services.UserService::Authenticate(System.String,System.String)": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "45": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "74": 0,
+            "75": 0
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 25,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 40,
+              "EndOffset": 51,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 172,
+              "EndOffset": 174,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 172,
+              "EndOffset": 183,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 208,
+              "EndOffset": 210,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 208,
+              "EndOffset": 219,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<Ecommwebapi.Data.Dtos.UserReadDto> Ecommwebapi.Services.UserService::GetAll()": {
+          "Lines": {
+            "78": 0,
+            "79": 0,
+            "80": 0
+          },
+          "Branches": []
+        },
+        "Ecommwebapi.Data.Dtos.UserReadDto Ecommwebapi.Services.UserService::GetById(System.Int32)": {
+          "Lines": {
+            "83": 1,
+            "84": 1,
+            "85": 1,
+            "86": 1
+          },
+          "Branches": []
+        },
+        "Ecommwebapi.Data.Dtos.UserReadDto Ecommwebapi.Services.UserService::Create(Ecommwebapi.Data.Models.User,System.String)": {
+          "Lines": {
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "101": 0,
+            "103": 0,
+            "104": 0,
+            "107": 0,
+            "110": 0,
+            "112": 0,
+            "115": 0,
+            "116": 0
+          },
+          "Branches": [
+            {
+              "Line": 90,
+              "Offset": 22,
+              "EndOffset": 24,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 22,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 172,
+              "EndOffset": 174,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 172,
+              "EndOffset": 207,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Services.UserService::Update(Ecommwebapi.Data.Models.User,System.String)": {
+          "Lines": {
+            "119": 0,
+            "120": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "128": 0,
+            "129": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "136": 0,
+            "137": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "151": 0,
+            "152": 0,
+            "154": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "160": 0,
+            "161": 0
+          },
+          "Branches": [
+            {
+              "Line": 122,
+              "Offset": 150,
+              "EndOffset": 152,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 122,
+              "Offset": 150,
+              "EndOffset": 164,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 180,
+              "EndOffset": 206,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 211,
+              "EndOffset": 216,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 131,
+              "Offset": 350,
+              "EndOffset": 352,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 131,
+              "Offset": 350,
+              "EndOffset": 385,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 211,
+              "EndOffset": 404,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 140,
+              "Offset": 427,
+              "EndOffset": 429,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 140,
+              "Offset": 427,
+              "EndOffset": 449,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 145,
+              "Offset": 462,
+              "EndOffset": 464,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 145,
+              "Offset": 462,
+              "EndOffset": 484,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 151,
+              "Offset": 497,
+              "EndOffset": 499,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 151,
+              "Offset": 497,
+              "EndOffset": 530,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Services.UserService::Delete(System.Int32)": {
+          "Lines": {
+            "164": 0,
+            "165": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0
+          },
+          "Branches": [
+            {
+              "Line": 167,
+              "Offset": 130,
+              "EndOffset": 132,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 130,
+              "EndOffset": 147,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Services.UserService::.ctor(Ecommwebapi.Data.IUserRepo,Microsoft.Extensions.Options.IOptions`1<Ecommwebapi.Helpers.AppSettings>,AutoMapper.IMapper)": {
+          "Lines": {
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "36": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\DataContext.cs": {
+      "Ecommwebapi.Data.DataContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<Ecommwebapi.Data.Models.User> Ecommwebapi.Data.DataContext::get_Users()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<Ecommwebapi.Data.Models.Product> Ecommwebapi.Data.DataContext::get_Products()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Ecommwebapi.Data.DataContext::SaveChanges()": {
+          "Lines": {
+            "27": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Ecommwebapi.Data.DataContext::EnsureCreated()": {
+          "Lines": {
+            "35": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": [
+            {
+              "Line": 39,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 19,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Data.DataContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Ecommwebapi.Data.DataContext>)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\EFProductRepo.cs": {
+      "Ecommwebapi.Data.EFProductRepo": {
+        "System.Linq.IQueryable`1<Ecommwebapi.Data.Models.Product> Ecommwebapi.Data.EFProductRepo::get_Products()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.EFProductRepo::.ctor(Ecommwebapi.Data.IDataContext)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\EFUserRepo.cs": {
+      "Ecommwebapi.Data.EFUserRepo": {
+        "System.Linq.IQueryable`1<Ecommwebapi.Data.Models.User> Ecommwebapi.Data.EFUserRepo::get_Users()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.EFUserRepo::CreateUser(Ecommwebapi.Data.Models.User)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.EFUserRepo::DeleteUser(Ecommwebapi.Data.Models.User)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.EFUserRepo::SaveUser(Ecommwebapi.Data.Models.User)": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.EFUserRepo::.ctor(Ecommwebapi.Data.IDataContext)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\MockProductRepo.cs": {
+      "Ecommwebapi.Data.MockProductRepo": {
+        "System.Linq.IQueryable`1<Ecommwebapi.Data.Models.Product> Ecommwebapi.Data.MockProductRepo::get_Products()": {
+          "Lines": {
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.MockProductRepo::.ctor()": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\ProductSeeder.cs": {
+      "Ecommwebapi.Data.ProductSeeder": {
+        "System.Void Ecommwebapi.Data.ProductSeeder::Seed()": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": [
+            {
+              "Line": 23,
+              "Offset": 34,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 34,
+              "EndOffset": 317,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Data.ProductSeeder::.ctor(Ecommwebapi.Data.IDataContext)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\ProductService.cs": {
+      "Ecommwebapi.Data.ProductService": {
+        "System.Collections.Generic.IEnumerable`1<Ecommwebapi.Data.Models.Product> Ecommwebapi.Data.ProductService::GetAllProducts()": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        },
+        "Ecommwebapi.Data.Models.Product Ecommwebapi.Data.ProductService::GetProductById(System.Int32)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Data.ProductService::.ctor(Ecommwebapi.Data.IProductRepo)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\RepoUtility.cs": {
+      "Ecommwebapi.Data.RepoUtility": {
+        "System.Void Ecommwebapi.Data.RepoUtility::CreatePasswordHashAndSalt(System.String,System.Byte[]&,System.Byte[]&)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 7,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 29,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean Ecommwebapi.Data.RepoUtility::VerifyPasswordHash(System.String,System.Byte[],System.Byte[])": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 7,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 32,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 32,
+              "Offset": 29,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 60,
+              "EndOffset": 62,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 60,
+              "EndOffset": 79,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 94,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 94,
+              "EndOffset": 113,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 193,
+              "EndOffset": 147,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 50,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 50,
+              "Offset": 166,
+              "EndOffset": 174,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 193,
+              "EndOffset": 195,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\UserSeeder.cs": {
+      "Ecommwebapi.Data.UserSeeder": {
+        "System.Void Ecommwebapi.Data.UserSeeder::Seed()": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "22": 0,
+            "23": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 34,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 34,
+              "EndOffset": 271,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Data.UserSeeder::.ctor(Ecommwebapi.Data.IDataContext)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Models\\AuthenticateModel.cs": {
+      "Ecommwebapi.Data.Models.AuthenticateModel": {
+        "System.String Ecommwebapi.Data.Models.AuthenticateModel::get_Username()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.AuthenticateModel::get_Password()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Models\\Order.cs": {
+      "Ecommwebapi.Data.Models.Order": {
+        "System.Int32 Ecommwebapi.Data.Models.Order::get_Id()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime Ecommwebapi.Data.Models.Order::get_OrderDate()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.Order::get_OrderNumber()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "Ecommwebapi.Data.Models.User Ecommwebapi.Data.Models.Order::get_User()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<Ecommwebapi.Data.Models.OrderItem> Ecommwebapi.Data.Models.Order::get_Items()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Models\\OrderItem.cs": {
+      "Ecommwebapi.Data.Models.OrderItem": {
+        "System.Int32 Ecommwebapi.Data.Models.OrderItem::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "Ecommwebapi.Data.Models.Product Ecommwebapi.Data.Models.OrderItem::get_Product()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "Ecommwebapi.Data.Models.Order Ecommwebapi.Data.Models.OrderItem::get_Order()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Ecommwebapi.Data.Models.OrderItem::get_Quantity()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Models\\Product.cs": {
+      "Ecommwebapi.Data.Models.Product": {
+        "System.Int32 Ecommwebapi.Data.Models.Product::get_Id()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.Product::get_Name()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.Product::get_Description()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Single Ecommwebapi.Data.Models.Product::get_Price()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Models\\User.cs": {
+      "Ecommwebapi.Data.Models.User": {
+        "System.Int32 Ecommwebapi.Data.Models.User::get_Id()": {
+          "Lines": {
+            "5": 4
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.User::get_FirstName()": {
+          "Lines": {
+            "6": 3
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.User::get_LastName()": {
+          "Lines": {
+            "7": 3
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.User::get_Username()": {
+          "Lines": {
+            "8": 2
+          },
+          "Branches": []
+        },
+        "System.Byte[] Ecommwebapi.Data.Models.User::get_PasswordHash()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Byte[] Ecommwebapi.Data.Models.User::get_PasswordSalt()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.User::get_Role()": {
+          "Lines": {
+            "11": 2
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Models.User::get_Token()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Dtos\\ProductReadDto.cs": {
+      "Ecommwebapi.Data.Dtos.ProductReadDto": {
+        "System.String Ecommwebapi.Data.Dtos.ProductReadDto::get_Name()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.ProductReadDto::get_Description()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Single Ecommwebapi.Data.Dtos.ProductReadDto::get_Price()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Dtos\\UserAuthenticateReadDto.cs": {
+      "Ecommwebapi.Data.Dtos.UserAuthenticateReadDto": {
+        "System.Int32 Ecommwebapi.Data.Dtos.UserAuthenticateReadDto::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserAuthenticateReadDto::get_FirstName()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserAuthenticateReadDto::get_LastName()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserAuthenticateReadDto::get_Username()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserAuthenticateReadDto::get_Role()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserAuthenticateReadDto::get_Token()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Dtos\\UserReadDto.cs": {
+      "Ecommwebapi.Data.Dtos.UserReadDto": {
+        "System.Int32 Ecommwebapi.Data.Dtos.UserReadDto::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserReadDto::get_FirstName()": {
+          "Lines": {
+            "6": 2
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserReadDto::get_LastName()": {
+          "Lines": {
+            "7": 2
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserReadDto::get_Username()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserReadDto::get_Role()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Dtos\\UserRegisterWriteDto.cs": {
+      "Ecommwebapi.Data.Dtos.UserRegisterWriteDto": {
+        "System.String Ecommwebapi.Data.Dtos.UserRegisterWriteDto::get_FirstName()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserRegisterWriteDto::get_LastName()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserRegisterWriteDto::get_Username()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserRegisterWriteDto::get_Password()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Data\\Dtos\\UserUpdateWriteDto.cs": {
+      "Ecommwebapi.Data.Dtos.UserUpdateWriteDto": {
+        "System.String Ecommwebapi.Data.Dtos.UserUpdateWriteDto::get_FirstName()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserUpdateWriteDto::get_LastName()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserUpdateWriteDto::get_Username()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String Ecommwebapi.Data.Dtos.UserUpdateWriteDto::get_Password()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Controllers\\ProductsController.cs": {
+      "Ecommwebapi.Controllers.ProductsController": {
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<System.Collections.Generic.IEnumerable`1<Ecommwebapi.Data.Dtos.ProductReadDto>> Ecommwebapi.Controllers.ProductsController::GetAllProducts()": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<Ecommwebapi.Data.Models.Order> Ecommwebapi.Controllers.ProductsController::GetProduct(System.Int32)": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "43": 0,
+            "44": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 20,
+              "EndOffset": 49,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Ecommwebapi.Controllers.ProductsController::.ctor(Ecommwebapi.Data.IProductService,AutoMapper.IMapper)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\ecommwebapi\\Controllers\\UsersController.cs": {
+      "Ecommwebapi.Controllers.UsersController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult Ecommwebapi.Controllers.UsersController::Authenticate(Ecommwebapi.Data.Models.AuthenticateModel)": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "38": 0,
+            "39": 0
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 31,
+              "EndOffset": 53,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Ecommwebapi.Controllers.UsersController::Register(Ecommwebapi.Data.Dtos.UserRegisterWriteDto)": {
+          "Lines": {
+            "44": 0,
+            "45": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Ecommwebapi.Controllers.UsersController::GetAll()": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Ecommwebapi.Controllers.UsersController::GetById(System.Int32)": {
+          "Lines": {
+            "69": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "77": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "84": 0,
+            "85": 0
+          },
+          "Branches": [
+            {
+              "Line": 72,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 25,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 51,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 84,
+              "EndOffset": 86,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 84,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Ecommwebapi.Controllers.UsersController::Update(System.Int32,Ecommwebapi.Data.Dtos.UserUpdateWriteDto)": {
+          "Lines": {
+            "89": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "97": 0,
+            "98": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "109": 0
+          },
+          "Branches": [
+            {
+              "Line": 92,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 25,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 51,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Ecommwebapi.Controllers.UsersController::Delete(System.Int32)": {
+          "Lines": {
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0
+          },
+          "Branches": []
+        },
+        "System.Void Ecommwebapi.Controllers.UsersController::.ctor(Ecommwebapi.Services.IUserService,AutoMapper.IMapper)": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "ecommwebapi.Tests.dll": {
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.net.test.sdk\\16.5.0\\build\\netcoreapp2.1\\Microsoft.NET.Test.Sdk.Program.cs": {
+      "AutoGeneratedProgram": {
+        "System.Void AutoGeneratedProgram::Main(System.String[])": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\study\\TestProj\\ecommwebapi\\Ecommwebapi.Tests\\UserServiceTests.cs": {
+      "Tests.UserServiceTests": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<T> Tests.UserServiceTests::GetQueryableMockDbSet(System.Collections.Generic.List`1<T>)": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Void Tests.UserServiceTests::GetById_Correct_Data_Mapping()": {
+          "Lines": {
+            "82": 1,
+            "83": 1,
+            "84": 1,
+            "85": 1,
+            "86": 1,
+            "87": 1,
+            "88": 1,
+            "89": 1,
+            "90": 1,
+            "91": 1,
+            "93": 1,
+            "94": 1,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "100": 1,
+            "101": 1,
+            "102": 1
+          },
+          "Branches": []
+        },
+        "System.Void Tests.UserServiceTests::.ctor(Xunit.Abstractions.ITestOutputHelper)": {
+          "Lines": {
+            "43": 1,
+            "44": 1,
+            "46": 1,
+            "48": 1,
+            "50": 2,
+            "51": 1,
+            "78": 1
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
