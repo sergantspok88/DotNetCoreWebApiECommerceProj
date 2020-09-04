@@ -24,6 +24,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.OpenApi.Models;
+using ecommwebapi.Data;
 
 namespace Ecommwebapi
 {
@@ -86,13 +87,14 @@ namespace Ecommwebapi
             });
 
             services.AddTransient<UserSeeder>();
+            services.AddTransient<ProductSeeder>();
 
             //use in memory db context - but using sqlite in memory should be closer to real databases
             // services.AddDbContext<IUserContext, UserContext>(
             //     options => options.UseInMemoryDatabase(databaseName: "estore-test")
             //     );
 
-            services.AddDbContext<IUserContext, UserContext>(cfg =>
+            services.AddDbContext<IDataContext, DataContext>(cfg =>
                 {
                     //cfg.UseSqlite("Filename=:memory:");
                     cfg.UseSqlite(CreateInMemoryDatabase());
@@ -103,9 +105,13 @@ namespace Ecommwebapi
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IDataService, MockDataService>();
+
+            //services.AddScoped<IProductRepo, MockProductRepo>();
+            services.AddScoped<IProductRepo, EFProductRepo>();
+            services.AddScoped<IProductService, ProductService>();
 
             //configure DI for application services
+            services.AddScoped<IUserRepo, EFUserRepo>();
             services.AddScoped<IUserService, UserService>();
             //User singleton because otherwise scoped would reinit our mock data per each request.
             //Would not be a problem for actual DB repo.

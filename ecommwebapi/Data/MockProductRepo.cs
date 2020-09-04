@@ -1,14 +1,16 @@
+﻿using Ecommwebapi.Data.Models;
+using System;
 using System.Collections.Generic;
-using Ecommwebapi.Data.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace Ecommwebapi.Data
+namespace ecommwebapi.Data
 {
-    public class MockDataService : IDataService
+    public class MockProductRepo : IProductRepo
     {
         private List<Product> products;
 
-        public MockDataService()
+        public MockProductRepo()
         {
             products = new List<Product>(){
                 new Product{
@@ -38,14 +40,6 @@ namespace Ecommwebapi.Data
             };
         }
 
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return products;
-        }
-
-        public Product GetProductById(int id)
-        {
-            return products.FirstOrDefault(p => p.Id == id);
-        }
+        public IQueryable<Product> Products => products.AsQueryable();
     }
 }

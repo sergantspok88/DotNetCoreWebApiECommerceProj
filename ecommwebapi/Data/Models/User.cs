@@ -1,4 +1,4 @@
-namespace Ecommwebapi.Models
+namespace Ecommwebapi.Data.Models
 {
     public class User
     {

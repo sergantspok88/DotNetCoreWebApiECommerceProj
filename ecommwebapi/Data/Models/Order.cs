@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Ecommwebapi.Models;
+using Ecommwebapi.Data.Models;
 
 namespace Ecommwebapi.Data.Models
 {

@@ -11,10 +11,10 @@ namespace Ecommwebapi.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IDataService repo;
+        private readonly IProductService repo;
         private readonly IMapper mapper;
 
-        public ProductsController(IDataService repo,
+        public ProductsController(IProductService repo,
             IMapper mapper)
         {
             this.mapper = mapper;

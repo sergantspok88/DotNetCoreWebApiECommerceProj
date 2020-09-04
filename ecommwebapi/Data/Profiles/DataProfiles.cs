@@ -1,7 +1,6 @@
 using AutoMapper;
 using Ecommwebapi.Data.Dtos;
 using Ecommwebapi.Data.Models;
-using Ecommwebapi.Models;
 
 namespace Ecommwebapi.Profiles
 {

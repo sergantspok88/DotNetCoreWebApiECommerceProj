@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Ecommwebapi.Helpers;
-using Ecommwebapi.Models;
 using Ecommwebapi.Data.Dtos;
 
 namespace Ecommwebapi.Controllers

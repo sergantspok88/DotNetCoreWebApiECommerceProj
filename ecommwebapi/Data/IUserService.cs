@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Ecommwebapi.Data.Dtos;
-using Ecommwebapi.Models;
+using Ecommwebapi.Data.Models;
 
 namespace Ecommwebapi.Services
 {
@@ -12,6 +12,6 @@ namespace Ecommwebapi.Services
         UserReadDto Create(User user, string password);
         void Update(User user, string password);
         void Delete(int id);
-        bool SaveAll();
+        //bool SaveAll();
     }
 }

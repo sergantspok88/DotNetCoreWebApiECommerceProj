@@ -9,23 +9,28 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System;
 using System.Text.Json;
-using Ecommwebapi.Models;
+using Ecommwebapi.Data.Models;
 using AutoMapper;
 using Ecommwebapi.Data;
 using Ecommwebapi.Data.Dtos;
+using ecommwebapi.Data;
 
 namespace Ecommwebapi.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserContext ctx;
+        //private readonly IDataContext ctx;
+        private readonly IUserRepo repo;
         private readonly AppSettings appSettings;
         private readonly IMapper mapper;
 
-        public UserService(IUserContext ctx, IOptions<AppSettings> appSettings,
+        public UserService(//IDataContext ctx, 
+            IUserRepo repo,
+            IOptions<AppSettings> appSettings,
             IMapper mapper)
         {
-            this.ctx = ctx;
+            //this.ctx = ctx;
+            this.repo = repo;
             this.appSettings = appSettings.Value;
             this.mapper = mapper;
         }
@@ -37,7 +42,7 @@ namespace Ecommwebapi.Services
                 return null;
             }
 
-            var user = ctx.Users.SingleOrDefault(x => x.Username == username);
+            var user = repo.Users.SingleOrDefault(x => x.Username == username);
 
             if (user == null)
             {
@@ -71,12 +76,12 @@ namespace Ecommwebapi.Services
 
         public IEnumerable<UserReadDto> GetAll()
         {
-            return mapper.Map<IEnumerable<User>, IEnumerable<UserReadDto>>(ctx.Users);
+            return mapper.Map<IEnumerable<User>, IEnumerable<UserReadDto>>(repo.Users);
         }
 
         public UserReadDto GetById(int id)
         {
-            var user = ctx.Users.FirstOrDefault(x => x.Id == id);
+            var user = repo.Users.FirstOrDefault(x => x.Id == id);
             return mapper.Map<UserReadDto>(user);
         }
 
@@ -87,7 +92,7 @@ namespace Ecommwebapi.Services
                 throw new AppException("Password is required");
             }
 
-            if (ctx.Users.Any(x => x.Username == user.Username))
+            if (repo.Users.Any(x => x.Username == user.Username))
             {
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
             }
@@ -99,13 +104,12 @@ namespace Ecommwebapi.Services
             user.PasswordSalt = passwordSalt;
 
             //autoincrement id like in database
-            user.Id = ctx.Users.Max(u => u.Id) + 1;
+            user.Id = repo.Users.Max(u => u.Id) + 1;
 
             //default role will be user
             user.Role = Role.User;
 
-            ctx.Users.Add(user);
-            ctx.SaveChanges();
+            repo.CreateUser(user);
 
             //return user;
             return mapper.Map<UserReadDto>(user);
@@ -113,7 +117,7 @@ namespace Ecommwebapi.Services
 
         public void Update(User userParam, string password = null)
         {
-            var user = ctx.Users.SingleOrDefault(x => x.Id == userParam.Id);
+            var user = repo.Users.SingleOrDefault(x => x.Id == userParam.Id);
 
             if (user == null)
             {
@@ -124,7 +128,7 @@ namespace Ecommwebapi.Services
             if (!string.IsNullOrWhiteSpace(userParam.Username) && userParam.Username != user.Username)
             {
                 //throw error if the new username is already taken
-                if (ctx.Users.Any(x => x.Username == userParam.Username))
+                if (repo.Users.Any(x => x.Username == userParam.Username))
                 {
                     throw new AppException("Username " + userParam.Username + " is already taken");
                 }
@@ -152,23 +156,24 @@ namespace Ecommwebapi.Services
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
             }
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
+            repo.SaveUser(user);
         }
 
         public void Delete(int id)
         {
-            var user = ctx.Users.SingleOrDefault(x => x.Id == id);
+            var user = repo.Users.SingleOrDefault(x => x.Id == id);
 
             if (user != null)
             {
-                ctx.Users.Remove(user);
-                ctx.SaveChanges();
+                repo.DeleteUser(user);
             }
         }
 
-        public bool SaveAll()
-        {
-            return ctx.SaveChanges() > 0;
-        }
+        //public bool SaveAll()
+        //{
+        //    //return ctx.SaveChanges() > 0;
+        //    return 
+        //}
     }
 }

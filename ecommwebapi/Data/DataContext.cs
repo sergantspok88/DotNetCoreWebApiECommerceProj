@@ -1,18 +1,26 @@
 using Ecommwebapi.Entities;
-using Ecommwebapi.Models;
+using Ecommwebapi.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Ecommwebapi.Data
 {
-    public class UserContext : DbContext, IUserContext
+    public class DataContext : DbContext, IDataContext
     {
-        public UserContext(DbContextOptions<UserContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users
+        {
+            get; set;
+        }
+
+        public DbSet<Product> Products
+        {
+            get; set;
+        }
 
         //public int SaveChangesCount { get; private set; }
         public override int SaveChanges()

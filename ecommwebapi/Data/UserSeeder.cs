@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Ecommwebapi.Entities;
-using Ecommwebapi.Models;
+using Ecommwebapi.Data.Models;
 using System;
 using System.Linq;
 
@@ -8,9 +8,9 @@ namespace Ecommwebapi.Data
 {
     public class UserSeeder
     {
-        private readonly IUserContext ctx;
+        private readonly IDataContext ctx;
 
-        public UserSeeder(IUserContext ctx)
+        public UserSeeder(IDataContext ctx)
         {
             this.ctx = ctx;
         }

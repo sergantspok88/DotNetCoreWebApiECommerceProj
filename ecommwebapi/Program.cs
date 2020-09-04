@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ecommwebapi.Data;
 using Ecommwebapi.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,9 @@ namespace Ecommwebapi
             {
                 var seeder = scope.ServiceProvider.GetService<UserSeeder>();
                 seeder.Seed();
+
+                var productSeeder = scope.ServiceProvider.GetService<ProductSeeder>();
+                productSeeder.Seed();
             }
         }
 

@@ -20,7 +20,7 @@ namespace Tests
     public class UserServiceTests
     {
         private readonly IUserService userService;
-        private readonly Mock<IUserContext> userContext = new Mock<IUserContext>();
+        private readonly Mock<IDataContext> userContext = new Mock<IDataContext>();
 
         private readonly ITestOutputHelper output;
 

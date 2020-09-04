@@ -3,7 +3,7 @@ using Ecommwebapi.Data.Models;
 
 namespace Ecommwebapi.Data
 {
-    public interface IDataService
+    public interface IProductService
     {
         IEnumerable<Product> GetAllProducts();
         Product GetProductById(int id);
