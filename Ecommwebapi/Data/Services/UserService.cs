@@ -94,7 +94,7 @@ namespace Ecommwebapi.Services
             user.PasswordSalt = passwordSalt;
 
             //autoincrement id like in database
-            user.Id = repo.Users.Max(u => u.Id) + 1;
+            //user.Id = repo.Users.Max(u => u.Id) + 1;
 
             //default role will be user
             user.Role = Role.User;

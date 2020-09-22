@@ -25,7 +25,7 @@ namespace Ecommwebapi.Data
             }
 
             //autoincrement max id
-            product.Id = repo.Products.Max(p => p.Id) + 1;
+            //product.Id = repo.Products.Max(p => p.Id) + 1;
 
             repo.CreateProduct(product);
 
@@ -119,7 +119,7 @@ namespace Ecommwebapi.Data
             }
 
             //autoincrement max id
-            category.Id = repo.Categories.Max(c => c.Id) + 1;
+            //category.Id = repo.Categories.Max(c => c.Id) + 1;
 
             repo.CreateCategory(category);
 
@@ -281,12 +281,12 @@ namespace Ecommwebapi.Data
             }
 
             //autoincrement max id
-            int id = 1;
-            if (repo.WishlistItems.Count() > 0)
-            {
-                id = repo.WishlistItems.Max(c => c.Id) + 1;
-            }
-            wishlistItem.Id = id;
+            //int id = 1;
+            //if (repo.WishlistItems.Count() > 0)
+            //{
+            //    id = repo.WishlistItems.Max(c => c.Id) + 1;
+            //}
+            //wishlistItem.Id = id;
 
             repo.CreateWishlistItem(wishlistItem);
 
@@ -343,8 +343,9 @@ namespace Ecommwebapi.Data
         public Order CreateOrder(Order order)
         {
             //autoincrement max id
-            order.Id = repo.Orders.Max(o => o.Id) + 1;
+            //order.Id = repo.Orders.Max(o => o.Id) + 1;
             order.OrderDate = DateTime.Now;
+            //Maybe smth different - like Guid etc
             order.OrderNumber = ("" + order.User.Id + order.OrderDate)
                 .GetHashCode().ToString();
 
@@ -401,7 +402,7 @@ namespace Ecommwebapi.Data
             }
 
             //autoincrement max id
-            orderItem.Id = repo.OrderItems.Max(c => c.Id) + 1;
+            //orderItem.Id = repo.OrderItems.Max(c => c.Id) + 1;
 
             repo.CreateOrderItem(orderItem);
 
