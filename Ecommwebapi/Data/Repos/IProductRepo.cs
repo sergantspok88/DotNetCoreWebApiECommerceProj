@@ -8,6 +8,7 @@ namespace Ecommwebapi.Data
 {
     public interface IProductRepo
     {
+        //Products
         public IQueryable<Product> Products
         {
             get;
@@ -43,7 +44,6 @@ namespace Ecommwebapi.Data
         {
             get;
         }
-
         void CreateWishlistItem(WishlistItem w);
         void DeleteWishlistItem(WishlistItem w);
         void SaveWishlistItem(WishlistItem w);

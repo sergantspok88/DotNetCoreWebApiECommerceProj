@@ -17,7 +17,7 @@ namespace Ecommwebapi.Data.Dtos
         {
             get; set;
         }
-        [Required]
+        //[Required]
         public int UserId
         {
             get; set;

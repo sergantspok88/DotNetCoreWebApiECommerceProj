@@ -34,17 +34,15 @@ namespace Ecommwebapi
     {
         private string corsPolicyAllowAll = "AllowAllHeaders";
 
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration
         {
             get;
         }
 
-        //private DbConnection _connection;
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -91,25 +89,6 @@ namespace Ecommwebapi
             services.AddScoped<UserSeeder>();
             services.AddScoped<ProductSeeder>();
 
-            //use in memory db context - but using sqlite in memory should be closer to real databases
-            // services.AddDbContext<IUserContext, UserContext>(
-            //     options => options.UseInMemoryDatabase(databaseName: "estore-test")
-            //     );
-
-
-            //!!!Problem is that in-memory db ceases to exist as soon as we close connection to it
-            //so we have to make it singleton and keep the connection - but this leads to different problems
-            //services.AddDbContext<IDataContext, DataContext>(cfg =>
-            //    {
-            //        //cfg.UseSqlite("Filename=:memory:");
-            //        cfg.UseSqlite(CreateInMemoryDatabase());
-            //        //cfg.UseSqlite("DataSource=file::memory:");
-            //        cfg.EnableSensitiveDataLogging(true);
-            //    }, ServiceLifetime.Singleton, ServiceLifetime.Singleton
-            //);
-            //_connection = RelationalOptionsExtension.Extract(ContextOptions).Connection;
-
-            //var dataSource = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ecomm.db");
             var dataSource = Path.Combine(Directory.GetCurrentDirectory(), "ecomm.db");
             services.AddDbContext<IDataContext, DataContext>(cfg =>
                 {
@@ -120,23 +99,17 @@ namespace Ecommwebapi
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-
             //services.AddScoped<IProductRepo, MockProductRepo>();
             services.AddScoped<IProductRepo, EFProductRepo>();
             services.AddScoped<IProductService, ProductService>();
 
-            //configure DI for application services
             services.AddScoped<IUserRepo, EFUserRepo>();
             services.AddScoped<IUserService, UserService>();
-            //User singleton because otherwise scoped would reinit our mock data per each request.
-            //Would not be a problem for actual DB repo.
-            //services.AddSingleton<IUserRepo, MockUserRepo>();
 
             // Register the Swagger generator and define a Swagger document 
-            // for Northwind service 
-            services.AddSwaggerGen(options => 
-            { 
-                options.SwaggerDoc(name: "v1", info: 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc(name: "v1", info:
                     new OpenApiInfo { Title = "ECommWebAPI", Version = "v1" });
 
                 //https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&tabs=visual-studio
@@ -147,20 +120,6 @@ namespace Ecommwebapi
             });
 
         }
-
-        //https://github.com/dotnet/efcore/issues/4922
-        //https://github.com/dotnet/efcore/issues/7924
-        //https://docs.microsoft.com/en-us/ef/core/miscellaneous/testing/sqlite#writing-tests
-        private static DbConnection CreateInMemoryDatabase()
-        {
-            var connection = new SqliteConnection("Filename=:memory:");
-
-            connection.Open();
-
-            return connection;
-        }
-
-        //public void Dispose() => _connection.Dispose();
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -185,11 +144,12 @@ namespace Ecommwebapi
             });
 
             app.UseSwagger();
-            app.UseSwaggerUI(options => {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", 
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json",
                     "ECommWebAPI Version 1");
-                options.SupportedSubmitMethods(new[] 
-                    { SubmitMethod.Get, SubmitMethod.Post, 
+                options.SupportedSubmitMethods(new[]
+                    { SubmitMethod.Get, SubmitMethod.Post,
                       SubmitMethod.Put, SubmitMethod.Delete });
             });
         }

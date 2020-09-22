@@ -14,7 +14,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Ecommwebapi.Controllers
 {
-    //[Route("api/products")]
     [Route("api")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -22,7 +21,7 @@ namespace Ecommwebapi.Controllers
         private readonly IProductService productService;
         private readonly IUserService userService;
         private readonly IMapper mapper;
-        private ILogger<ProductsController> logger;
+        private readonly ILogger<ProductsController> logger;
 
         public ProductsController(IProductService productService,
             IUserService userService,
@@ -44,7 +43,6 @@ namespace Ecommwebapi.Controllers
             return Ok(mapper.Map<IEnumerable<ProductReadDto>>(products));
         }
 
-        //
         [HttpGet("products-like/{nameLike}/{take:int}")]
         public ActionResult<IEnumerable<ProductReadDto>> GetProductsNameContains(string nameLike, int take)
         {
@@ -73,7 +71,6 @@ namespace Ecommwebapi.Controllers
             var product = productService.GetProductById(id);
             if (product != null)
             {
-                logger.LogInformation("categoryName: " + product.Category.Name);
                 return Ok(mapper.Map<ProductReadDto>(product));
             }
             else
@@ -91,19 +88,9 @@ namespace Ecommwebapi.Controllers
         [HttpGet("products/{skip:int}/{number:int}")]
         public ActionResult<ProductReadDto> GetProductsSkipAndTakeNumber(int skip, int number)
         {
-            //logger.LogInformation("1");
             var products = productService.GetProductsSkipAndTakeNumber(skip, number);
-            //var products = productService.GetAllProducts().Where(p => p.Price > 100);
-            //logger.LogInformation("2");
-
-            //foreach (var item in products)
-            //{
-            //    logger.LogInformation("3");
-            //    break;
-            //}
 
             return Ok(mapper.Map<IEnumerable<Product>, IEnumerable<ProductReadDto>>(products));
-            //return Ok();
         }
 
         /// <summary>
@@ -117,7 +104,7 @@ namespace Ecommwebapi.Controllers
         public ActionResult<ProductReadDto> GetProductsByCategorySkipAndTakeNumber(string category, int skip, int number)
         {
             var products = productService.GetProductsByCategoryNameSkipAndTakeNumber(category, skip, number);
-            
+
             return Ok(mapper.Map<IEnumerable<Product>, IEnumerable<ProductReadDto>>(products));
         }
 
@@ -130,8 +117,8 @@ namespace Ecommwebapi.Controllers
             {
                 //create product
                 var newProduct = productService.CreateProduct(product);
-                //return Ok();
-                return Created(new Uri($"{Request.Path}/{newProduct.Id}", UriKind.Relative), 
+
+                return Created(new Uri($"{Request.Path}/{newProduct.Id}", UriKind.Relative),
                     mapper.Map<Product, ProductReadDto>(newProduct));
             }
             catch (AppException ex)
@@ -158,9 +145,9 @@ namespace Ecommwebapi.Controllers
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -176,15 +163,15 @@ namespace Ecommwebapi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new
+                return StatusCode(500, new ResponseError
                 {
-                    message = ex.ToString()
+                    Message = ex.ToString()
                 });
-            }            
+            }
         }
 
         //------------------------------------------------------------
-        //!!!everything below need to refactor in separate controllers
+        //Everything below needs to be refactored in separate controllers (categories, wishlists etc)
 
         //Categories----------------------------------------
         [HttpGet("categories")]
@@ -196,22 +183,22 @@ namespace Ecommwebapi.Controllers
         }
 
         [Authorize(Roles = Role.Admin)]
-        [HttpPost("categoris")]
+        [HttpPost("categories")]
         public IActionResult AddCategory([FromBody] CategoryAddWriteDto model)
         {
             var category = mapper.Map<Category>(model);
             try
             {
                 var newCategory = productService.CreateCategory(category);
-                //return Ok();
-                return Created(new Uri($"{Request.Path}/{newCategory.Id}", UriKind.Relative), 
+
+                return Created(new Uri($"{Request.Path}/{newCategory.Id}", UriKind.Relative),
                     mapper.Map<Category, CategoryReadDto>(newCategory));
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -231,9 +218,9 @@ namespace Ecommwebapi.Controllers
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -314,12 +301,20 @@ namespace Ecommwebapi.Controllers
                 cartitem.User = userService.GetById(model.UserId);
                 int currentUserId = int.Parse(User.Identity.Name);
 
-                if (User.IsInRole(Role.Admin) || currentUserId == model.UserId)
+                //UserId in CartItemAddWriteDto is not required
+                //If it is empty - add current authorized user
+                //otherwise add only if authorized as admin or authorized same as in addWrite model
+                if (cartitem.User == null)
+                {
+                    cartitem.User = userService.GetById(currentUserId);
+                }
+
+                if (User.IsInRole(Role.Admin) || currentUserId == cartitem.User.Id)
                 {
                     cartitem.Product = productService.GetProductById(model.ProductId);
                     var newCartItem = productService.CreateCartItem(cartitem);
-                    //return Ok();
-                    return Created(new Uri($"{Request.Path}/{newCartItem.Id}", UriKind.Relative), 
+
+                    return Created(new Uri($"{Request.Path}/{newCartItem.Id}", UriKind.Relative),
                         mapper.Map<CartItem, CartItemReadDto>(newCartItem));
                 }
                 else
@@ -329,9 +324,9 @@ namespace Ecommwebapi.Controllers
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -361,9 +356,9 @@ namespace Ecommwebapi.Controllers
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -401,7 +396,7 @@ namespace Ecommwebapi.Controllers
             else
             {
                 var currentUserId = int.Parse(User.Identity.Name);
-                //non admins can get their cart items
+                //non admins can get only their wishlist items
                 var wishlistItems = productService.GetAllWishlistItemsForUser(currentUserId);
                 return Ok(mapper.Map<IEnumerable<WishlistItem>, IEnumerable<WishlistItemReadDto>>(wishlistItems));
             }
@@ -434,7 +429,8 @@ namespace Ecommwebapi.Controllers
                 if (wishlistItem != null)
                 {
                     return Ok(mapper.Map<WishlistItem, WishlistItemReadDto>(wishlistItem));
-                } else
+                }
+                else
                 {
                     return NotFound();
                 }
@@ -459,22 +455,23 @@ namespace Ecommwebapi.Controllers
                 if (wishlistItem.User == null)
                 {
                     wishlistItem.User = userService.GetById(currentUserId);
-                } else if (!User.IsInRole(Role.Admin) && currentUserId != wishlistItem.User.Id)
+                }
+                else if (!User.IsInRole(Role.Admin) && currentUserId != wishlistItem.User.Id)
                 {
                     return Forbid();
                 }
 
                 wishlistItem.Product = productService.GetProductById(model.ProductId);
                 var newWishlistItem = productService.CreateWishlistItem(wishlistItem);
-                //return Ok();
-                return Created(new Uri($"{Request.Path}/{newWishlistItem.Id}", UriKind.Relative), 
+
+                return Created(new Uri($"{Request.Path}/{newWishlistItem.Id}", UriKind.Relative),
                     mapper.Map<WishlistItem, WishlistItemReadDto>(newWishlistItem));
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -600,7 +597,7 @@ namespace Ecommwebapi.Controllers
                 //- delete all CartItems
                 productService.DeleteCartItemRange(cartItems);
 
-                return Created(new Uri($"orders/{newOrder.Id}", UriKind.Relative), 
+                return Created(new Uri($"orders/{newOrder.Id}", UriKind.Relative),
                     mapper.Map<Order, OrderReadDto>(newOrder));
             }
             else
@@ -654,7 +651,5 @@ namespace Ecommwebapi.Controllers
         //        return Ok(mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemReadDto>>(orderItems));
         //    }
         //}
-
     }
-
 }

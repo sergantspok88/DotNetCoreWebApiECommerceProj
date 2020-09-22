@@ -9,7 +9,7 @@ namespace Ecommwebapi.Data
 {
     public class ProductService : IProductService
     {
-        private IProductRepo repo;
+        private readonly IProductRepo repo;
 
         public ProductService(IProductRepo repo)
         {
@@ -18,7 +18,7 @@ namespace Ecommwebapi.Data
 
         public Product CreateProduct(Product product)
         {
-            //Realistically need to check additionaly category etc
+            //Realistically need to check also category etc
             if (repo.Products.Any(p => p.Name == product.Name))
             {
                 throw new AppException("Product name " + product.Name + " is already taken");
@@ -198,12 +198,13 @@ namespace Ecommwebapi.Data
             }
 
             //autoincrement max id
-            int id = 1;
-            if (repo.CartItems.Count() > 0)
-            {
-                id = repo.CartItems.Max(c => c.Id) + 1;
-            }
-            cartItem.Id = id;
+            //do this in db now
+            //int id = 1;
+            //if (repo.CartItems.Count() > 0)
+            //{
+            //    id = repo.CartItems.Max(c => c.Id) + 1;
+            //}
+            //cartItem.Id = id;
 
             repo.CreateCartItem(cartItem);
 

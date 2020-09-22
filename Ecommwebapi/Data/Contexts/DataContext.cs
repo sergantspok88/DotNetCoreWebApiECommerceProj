@@ -47,12 +47,8 @@ namespace Ecommwebapi.Data
             get; set;
         }
 
-        //public int SaveChangesCount { get; private set; }
         public override int SaveChanges()
         {
-            //base.SaveChanges();
-            //this.SaveChangesCount++;
-            //return 1;
             return base.SaveChanges();
         }
 

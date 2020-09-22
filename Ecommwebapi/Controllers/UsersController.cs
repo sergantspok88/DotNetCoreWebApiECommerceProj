@@ -15,22 +15,18 @@ namespace Ecommwebapi.Controllers
 {
     [Authorize]
     [ApiController]
-    //[Route("[controller]")]
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        private IUserService userService;
+        private readonly IUserService userService;
         private readonly IMapper mapper;
-        //private UserManager<User> userManager;
 
         public UsersController(IUserService userService,
             IMapper mapper
-            //,UserManager<User> userManager
             )
         {
             this.userService = userService;
             this.mapper = mapper;
-            //this.userManager = userManager;
         }
 
         /// <summary>
@@ -64,7 +60,7 @@ namespace Ecommwebapi.Controllers
 
             if (user == null)
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new ResponseError { Message = "Username or password is incorrect" });
             }
 
             return Ok(mapper.Map<UserAuthenticateReadDto>(user));
@@ -78,13 +74,12 @@ namespace Ecommwebapi.Controllers
 
             try
             {
-                //create user
                 var newUser = userService.Create(user, model.Password);
                 return Ok();
             }
             catch (AppException ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return BadRequest(new ResponseError { Message = ex.Message });
             }
         }
 
@@ -93,14 +88,18 @@ namespace Ecommwebapi.Controllers
         public ActionResult<IEnumerable<UserReadDto>> GetAll()
         {
             var users = userService.GetAll();
-            //return Ok(users);
             return Ok(mapper.Map<IEnumerable<User>, IEnumerable<UserReadDto>>(users));
         }
 
+        /// <summary>
+        /// Get user by its id.
+        /// Only allow admins to access other user records.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<UserReadDto> GetById(int id)
         {
-            //only allow admins to access other user records
             var currentUserId = int.Parse(User.Identity.Name);
             if (id != currentUserId && !User.IsInRole(Role.Admin))
             {
@@ -117,10 +116,16 @@ namespace Ecommwebapi.Controllers
             return Ok(mapper.Map<User, UserReadDto>(user));
         }
 
+        /// <summary>
+        /// Update user by its id.
+        /// Users can update only themselves, admins can update anybody.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UserUpdateWriteDto model)
         {
-            //users can update only themselves, admins can anybody
             var currentUserId = int.Parse(User.Identity.Name);
             if (id != currentUserId && !User.IsInRole(Role.Admin))
             {
@@ -137,7 +142,7 @@ namespace Ecommwebapi.Controllers
             }
             catch (AppException ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return BadRequest(new ResponseError { Message = ex.Message });
             }
         }
 

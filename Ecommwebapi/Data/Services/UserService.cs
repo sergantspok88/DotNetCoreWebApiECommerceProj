@@ -8,31 +8,21 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System;
-using System.Text.Json;
 using Ecommwebapi.Data.Models;
-using AutoMapper;
 using Ecommwebapi.Data;
-using Ecommwebapi.Data.Dtos;
-//using ecommwebapi.Data;
 
 namespace Ecommwebapi.Services
 {
     public class UserService : IUserService
     {
-        //private readonly IDataContext ctx;
         private readonly IUserRepo repo;
         private readonly AppSettings appSettings;
-        private readonly IMapper mapper;
 
-        public UserService(//IDataContext ctx, 
-            IUserRepo repo,
-            IOptions<AppSettings> appSettings,
-            IMapper mapper)
+        public UserService(IUserRepo repo,
+            IOptions<AppSettings> appSettings)
         {
-            //this.ctx = ctx;
             this.repo = repo;
             this.appSettings = appSettings.Value;
-            this.mapper = mapper;
         }
 
         public User Authenticate(string username, string password)
@@ -71,20 +61,17 @@ namespace Ecommwebapi.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
 
-            //return mapper.Map<UserAuthenticateReadDto>(user);
             return user;
         }
 
         public IEnumerable<User> GetAll()
         {
-            //return mapper.Map<IEnumerable<User>, IEnumerable<UserReadDto>>(repo.Users);
             return repo.Users;
         }
 
         public User GetById(int id)
         {
             var user = repo.Users.FirstOrDefault(x => x.Id == id);
-            //return mapper.Map<UserReadDto>(user);
             return user;
         }
 
@@ -114,8 +101,6 @@ namespace Ecommwebapi.Services
 
             repo.CreateUser(user);
 
-            //return user;
-            //return mapper.Map<UserReadDto>(user);
             return user;
         }
 
@@ -160,7 +145,7 @@ namespace Ecommwebapi.Services
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
             }
-            //ctx.SaveChanges();
+            
             repo.SaveUser(user);
         }
 
@@ -173,11 +158,5 @@ namespace Ecommwebapi.Services
                 repo.DeleteUser(user);
             }
         }
-
-        //public bool SaveAll()
-        //{
-        //    //return ctx.SaveChanges() > 0;
-        //    return 
-        //}
     }
 }

@@ -10,58 +10,18 @@ namespace Ecommwebapi.Data
     public class EFProductRepo : IProductRepo
     {
         private IDataContext ctx;
+
         public EFProductRepo(IDataContext ctx)
         {
             this.ctx = ctx;
         }
 
+        //Products
         public IQueryable<Product> Products => ctx.Products;
-
-        public IQueryable<Category> Categories => ctx.Categories;
-
-        public IQueryable<CartItem> CartItems => ctx.CartItems;
-
-        public IQueryable<WishlistItem> WishlistItems => ctx.WishlistItems;
-
-        public void CreateCartItem(CartItem c)
-        {
-            ctx.CartItems.Add(c);
-            ctx.SaveChanges();
-        }
-
-        public void CreateCategory(Category c)
-        {
-            ctx.Categories.Add(c);
-            ctx.SaveChanges();
-        }
 
         public void CreateProduct(Product p)
         {
             ctx.Products.Add(p);
-            ctx.SaveChanges();
-        }
-
-        public void CreateWishlistItem(WishlistItem w)
-        {
-            ctx.WishlistItems.Add(w);
-            ctx.SaveChanges();
-        }
-
-        public void DeleteCartItem(CartItem c)
-        {
-            ctx.CartItems.Remove(c);
-            ctx.SaveChanges();
-        }
-
-        public void DeleteCartItemRange(IEnumerable<CartItem> c)
-        {
-            ctx.CartItems.RemoveRange(c);
-            ctx.SaveChanges();
-        }
-
-        public void DeleteCategory(Category c)
-        {
-            ctx.Categories.Remove(c);
             ctx.SaveChanges();
         }
 
@@ -71,14 +31,23 @@ namespace Ecommwebapi.Data
             ctx.SaveChanges();
         }
 
-        public void DeleteWishlistItem(WishlistItem w)
+        public void SaveProduct(Product p)
         {
-            ctx.WishlistItems.Remove(w);
             ctx.SaveChanges();
         }
 
-        public void SaveCartItem(CartItem c)
+        //Categories
+        public IQueryable<Category> Categories => ctx.Categories;
+
+        public void CreateCategory(Category c)
         {
+            ctx.Categories.Add(c);
+            ctx.SaveChanges();
+        }
+
+        public void DeleteCategory(Category c)
+        {
+            ctx.Categories.Remove(c);
             ctx.SaveChanges();
         }
 
@@ -87,8 +56,44 @@ namespace Ecommwebapi.Data
             ctx.SaveChanges();
         }
 
-        public void SaveProduct(Product p)
+        //Cart items
+        public IQueryable<CartItem> CartItems => ctx.CartItems;
+
+        public void CreateCartItem(CartItem c)
         {
+            ctx.CartItems.Add(c);
+            ctx.SaveChanges();
+        }
+
+        public void DeleteCartItem(CartItem c)
+        {
+            ctx.CartItems.Remove(c);
+            ctx.SaveChanges();
+        }
+
+        public void SaveCartItem(CartItem c)
+        {
+            ctx.SaveChanges();
+        }
+
+        public void DeleteCartItemRange(IEnumerable<CartItem> c)
+        {
+            ctx.CartItems.RemoveRange(c);
+            ctx.SaveChanges();
+        }
+
+        //Wishlists
+        public IQueryable<WishlistItem> WishlistItems => ctx.WishlistItems;
+
+        public void CreateWishlistItem(WishlistItem w)
+        {
+            ctx.WishlistItems.Add(w);
+            ctx.SaveChanges();
+        }
+
+        public void DeleteWishlistItem(WishlistItem w)
+        {
+            ctx.WishlistItems.Remove(w);
             ctx.SaveChanges();
         }
 
