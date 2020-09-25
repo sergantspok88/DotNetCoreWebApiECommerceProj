@@ -115,7 +115,7 @@ namespace Ecommwebapi.Controllers
             var product = mapper.Map<Product>(model);
 
             //product.Category = productService.GetCategoryById(model.CategoryId);
-            var category = productService.GetCategoryByName(model.CategoryName);
+            product.Category = productService.GetCategoryByName(model.CategoryName);
 
             if (product.Category == null)
             {
@@ -149,8 +149,8 @@ namespace Ecommwebapi.Controllers
         {
             var product = mapper.Map<Product>(model);
             product.Id = id;
-            var category = productService.GetCategoryByName(model.CategoryName);
-            if (category == null)
+            product.Category = productService.GetCategoryByName(model.CategoryName);
+            if (product.Category == null)
             {
                 return BadRequest(new ResponseError
                 {
