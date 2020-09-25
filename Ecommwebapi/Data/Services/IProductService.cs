@@ -18,6 +18,8 @@ namespace Ecommwebapi.Data
 
         //Categories
         IEnumerable<Category> GetAllCategories();
+        Category GetCategoryById(int categoryId);
+        Category GetCategoryByName(string categoryName);
         Category CreateCategory(Category category);
         void UpdateCategory(Category category);
         void DeleteCategory(string name);

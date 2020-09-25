@@ -102,6 +102,11 @@ namespace Ecommwebapi.Data
                 product.Price = productParam.Price;
             }
 
+            //category
+            {
+                product.Category = productParam.Category;
+            }
+
             repo.SaveProduct(product);
         }
 
@@ -109,6 +114,16 @@ namespace Ecommwebapi.Data
         public IEnumerable<Category> GetAllCategories()
         {
             return repo.Categories;
+        }
+
+        public Category GetCategoryById(int categoryId)
+        {
+            return repo.Categories.Where(c => c.Id == categoryId).FirstOrDefault();
+        }
+
+        public Category GetCategoryByName(string categoryName)
+        {
+            return repo.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
         }
 
         public Category CreateCategory(Category category)

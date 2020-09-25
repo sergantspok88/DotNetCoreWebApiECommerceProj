@@ -113,6 +113,18 @@ namespace Ecommwebapi.Controllers
         public IActionResult AddProduct([FromBody] ProductAddWriteDto model)
         {
             var product = mapper.Map<Product>(model);
+
+            //product.Category = productService.GetCategoryById(model.CategoryId);
+            var category = productService.GetCategoryByName(model.CategoryName);
+
+            if (product.Category == null)
+            {
+                return BadRequest(new ResponseError
+                {
+                    Message = "Category is not set"
+                });
+            }
+
             try
             {
                 //create product
@@ -123,9 +135,9 @@ namespace Ecommwebapi.Controllers
             }
             catch (AppException ex)
             {
-                return BadRequest(new
+                return BadRequest(new ResponseError
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
         }
@@ -137,6 +149,14 @@ namespace Ecommwebapi.Controllers
         {
             var product = mapper.Map<Product>(model);
             product.Id = id;
+            var category = productService.GetCategoryByName(model.CategoryName);
+            if (category == null)
+            {
+                return BadRequest(new ResponseError
+                {
+                    Message = "Can not find category"
+                });
+            }
 
             try
             {

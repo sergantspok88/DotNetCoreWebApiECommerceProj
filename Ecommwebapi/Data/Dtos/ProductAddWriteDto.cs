@@ -23,5 +23,10 @@ namespace Ecommwebapi.Data.Dtos
         {
             get; set;
         }
+        [Required]
+        public string CategoryName
+        {
+            get; set;
+        }
     }
 }
