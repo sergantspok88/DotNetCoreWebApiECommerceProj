@@ -68,6 +68,7 @@ namespace Ecommwebapi
             //configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -90,6 +91,7 @@ namespace Ecommwebapi
             services.AddScoped<ProductSeeder>();
 
             var dataSource = Path.Combine(Directory.GetCurrentDirectory(), "ecomm.db");
+            //var dataSource = @"c:\study\TestProj\ecommwebapi\Ecommwebapi\ecomm.db";
             services.AddDbContext<IDataContext, DataContext>(cfg =>
                 {
                     cfg.UseSqlite($"Data Source={dataSource};");

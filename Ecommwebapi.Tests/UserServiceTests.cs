@@ -49,7 +49,8 @@ namespace Tests
             var userRepo = new Mock<IUserRepo>();
             userRepo.Setup(x => x.Users).Returns(users.AsQueryable());
 
-            IUserService userService = new UserService(userRepo.Object, options, mapper);
+            //IUserService userService = new UserService(userRepo.Object, options, mapper);
+            IUserService userService = new UserService(userRepo.Object, options);
 
             var user2 = userService.GetById(1);
             Assert.Equal(user1.Id, user2.Id);
@@ -76,7 +77,8 @@ namespace Tests
             var userRepo = new Mock<IUserRepo>();
             userRepo.Setup(x => x.Users).Returns(users.AsQueryable());
 
-            IUserService userService = new UserService(userRepo.Object, options, mapper);
+            //IUserService userService = new UserService(userRepo.Object, options, mapper);
+            IUserService userService = new UserService(userRepo.Object, options);
 
             Assert.Null(userService.Authenticate(username, password));
             userRepo.Verify(x => x.Users, Times.Never);

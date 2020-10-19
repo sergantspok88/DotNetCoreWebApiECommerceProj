@@ -34,6 +34,13 @@ namespace Ecommwebapi.Controllers
             this.logger = logger;
         }
 
+        [HttpGet("test")]
+        public ActionResult<string> GetTest()
+        {
+            //return Ok("This is a test response");
+            return Ok("Product count: " + productService.GetAllProducts().Count());
+        }
+
         //GET api/products
         [HttpGet("products")]
         public ActionResult<IEnumerable<ProductReadDto>> GetAllProducts()
