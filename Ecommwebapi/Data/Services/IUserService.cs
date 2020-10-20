@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Ecommwebapi.Data.Dtos;
 using Ecommwebapi.Data.Models;
 
-namespace Ecommwebapi.Services
+namespace Ecommwebapi.Data.Services
 {
     public interface IUserService
     {

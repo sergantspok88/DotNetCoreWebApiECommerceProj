@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using Xunit;
-using Ecommwebapi.Services;
 using Ecommwebapi.Data;
 using Ecommwebapi.Helpers;
 using Ecommwebapi.Data.Models;
@@ -13,6 +12,7 @@ using AutoMapper;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Xunit.Abstractions;
+using Ecommwebapi.Data.Services;
 
 namespace Tests
 {

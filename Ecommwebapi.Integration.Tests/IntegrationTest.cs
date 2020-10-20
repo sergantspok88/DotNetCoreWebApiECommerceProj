@@ -131,7 +131,7 @@ namespace Ecommwebapi.Integration.Tests
             var client = host.GetTestClient();
 
             //Act
-            var response = await client.GetAsync("api/test");
+            var response = await client.GetAsync("api/products/count");
 
             //Assert
             var responseString = await response.Content.ReadAsStringAsync();

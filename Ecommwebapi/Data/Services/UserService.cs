@@ -11,7 +11,7 @@ using System;
 using Ecommwebapi.Data.Models;
 using Ecommwebapi.Data;
 
-namespace Ecommwebapi.Services
+namespace Ecommwebapi.Data.Services
 {
     public class UserService : IUserService
     {

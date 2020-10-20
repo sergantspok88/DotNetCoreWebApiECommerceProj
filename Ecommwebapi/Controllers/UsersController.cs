@@ -1,5 +1,5 @@
 using Ecommwebapi.Data.Models;
-using Ecommwebapi.Services;
+using Ecommwebapi.Data.Services;
 using Ecommwebapi.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +7,6 @@ using AutoMapper;
 using Ecommwebapi.Helpers;
 using Ecommwebapi.Data.Dtos;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Ecommwebapi.Controllers
 {

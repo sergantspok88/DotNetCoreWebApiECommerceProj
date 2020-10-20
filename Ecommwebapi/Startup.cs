@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Ecommwebapi.Data;
 using Ecommwebapi.Helpers;
-using Ecommwebapi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +26,8 @@ using Microsoft.OpenApi.Models;
 using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
+using Ecommwebapi.Data.Repos;
+using Ecommwebapi.Data.Services;
 
 namespace Ecommwebapi
 {
@@ -68,7 +69,7 @@ namespace Ecommwebapi
             //configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -103,11 +104,19 @@ namespace Ecommwebapi
 
             //services.AddScoped<IProductRepo, MockProductRepo>();
             services.AddScoped<IProductRepo, EFProductRepo>();
+            services.AddScoped<ICategoryRepo, EFCategoryRepo>();
+            services.AddScoped<ICartItemRepo, EFCartItemRepo>();
+            services.AddScoped<IWishlistRepo, EFWishlistRepo>();
+            services.AddScoped<IOrderRepo, EFOrderRepo>();
             services.AddScoped<IUserRepo, EFUserRepo>();
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICartService, CartService>();
+            services.AddScoped<IWishlistService, WishlistService>();
+            services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IUserService, UserService>();
 
             // Register the Swagger generator and define a Swagger document 
