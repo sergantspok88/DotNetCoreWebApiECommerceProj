@@ -103,9 +103,11 @@ namespace Ecommwebapi
 
             //services.AddScoped<IProductRepo, MockProductRepo>();
             services.AddScoped<IProductRepo, EFProductRepo>();
-            services.AddScoped<IProductService, ProductService>();
-
             services.AddScoped<IUserRepo, EFUserRepo>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUserService, UserService>();
 
             // Register the Swagger generator and define a Swagger document 

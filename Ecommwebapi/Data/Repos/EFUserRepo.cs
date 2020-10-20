@@ -21,13 +21,13 @@ namespace Ecommwebapi.Data
         public void CreateUser(User u)
         {
             ctx.Users.Add(u);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteUser(User u)
         {
             ctx.Users.Remove(u);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void SaveUser(User u)

@@ -15,13 +15,16 @@ namespace Ecommwebapi.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepo repo;
+        //private readonly IUserRepo repo;
         private readonly AppSettings appSettings;
+        private readonly IUnitOfWork unitOfWork;
 
-        public UserService(IUserRepo repo,
+        public UserService(//IUserRepo repo,
+            IUnitOfWork unitOfWork,
             IOptions<AppSettings> appSettings)
         {
-            this.repo = repo;
+            //this.repo = repo;
+            this.unitOfWork = unitOfWork;
             this.appSettings = appSettings.Value;
         }
 
@@ -32,7 +35,7 @@ namespace Ecommwebapi.Services
                 return null;
             }
 
-            var user = repo.Users.SingleOrDefault(x => x.Username == username);
+            var user = unitOfWork.UserRepo.Users.SingleOrDefault(x => x.Username == username);
 
             if (user == null)
             {
@@ -66,12 +69,12 @@ namespace Ecommwebapi.Services
 
         public IEnumerable<User> GetAll()
         {
-            return repo.Users;
+            return unitOfWork.UserRepo.Users;
         }
 
         public User GetById(int id)
         {
-            var user = repo.Users.FirstOrDefault(x => x.Id == id);
+            var user = unitOfWork.UserRepo.Users.FirstOrDefault(x => x.Id == id);
             return user;
         }
 
@@ -82,7 +85,7 @@ namespace Ecommwebapi.Services
                 throw new AppException("Password is required");
             }
 
-            if (repo.Users.Any(x => x.Username == user.Username))
+            if (unitOfWork.UserRepo.Users.Any(x => x.Username == user.Username))
             {
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
             }
@@ -99,14 +102,15 @@ namespace Ecommwebapi.Services
             //default role will be user
             user.Role = Role.User;
 
-            repo.CreateUser(user);
+            unitOfWork.UserRepo.CreateUser(user);
+            unitOfWork.Complete();
 
             return user;
         }
 
         public void Update(User userParam, string password = null)
         {
-            var user = repo.Users.SingleOrDefault(x => x.Id == userParam.Id);
+            var user = unitOfWork.UserRepo.Users.SingleOrDefault(x => x.Id == userParam.Id);
 
             if (user == null)
             {
@@ -117,7 +121,7 @@ namespace Ecommwebapi.Services
             if (!string.IsNullOrWhiteSpace(userParam.Username) && userParam.Username != user.Username)
             {
                 //throw error if the new username is already taken
-                if (repo.Users.Any(x => x.Username == userParam.Username))
+                if (unitOfWork.UserRepo.Users.Any(x => x.Username == userParam.Username))
                 {
                     throw new AppException("Username " + userParam.Username + " is already taken");
                 }
@@ -145,17 +149,19 @@ namespace Ecommwebapi.Services
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
             }
-            
-            repo.SaveUser(user);
+
+            //unitOfWork.UserRepo.SaveUser(user);
+            unitOfWork.Complete();
         }
 
         public void Delete(int id)
         {
-            var user = repo.Users.SingleOrDefault(x => x.Id == id);
+            var user = unitOfWork.UserRepo.Users.SingleOrDefault(x => x.Id == id);
 
             if (user != null)
             {
-                repo.DeleteUser(user);
+                unitOfWork.UserRepo.DeleteUser(user);
+                unitOfWork.Complete();
             }
         }
     }

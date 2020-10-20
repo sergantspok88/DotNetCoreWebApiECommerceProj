@@ -9,17 +9,22 @@ namespace Ecommwebapi.Data
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepo repo;
+        //private readonly IProductRepo repo;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ProductService(IProductRepo repo)
+        public ProductService(
+            //IProductRepo repo
+            IUnitOfWork unitOfWork
+            )
         {
-            this.repo = repo;
+            //this.repo = repo;
+            this.unitOfWork = unitOfWork;
         }
 
         public Product CreateProduct(Product product)
         {
             //Realistically need to check also category etc
-            if (repo.Products.Any(p => p.Name == product.Name))
+            if (unitOfWork.ProductRepo.Products.Any(p => p.Name == product.Name))
             {
                 throw new AppException("Product name " + product.Name + " is already taken");
             }
@@ -27,60 +32,62 @@ namespace Ecommwebapi.Data
             //autoincrement max id
             //product.Id = repo.Products.Max(p => p.Id) + 1;
 
-            repo.CreateProduct(product);
+            unitOfWork.ProductRepo.CreateProduct(product);
+            unitOfWork.Complete();
 
             return product;
         }
 
         public void DeleteProduct(int id)
         {
-            var product = repo.Products.SingleOrDefault(p => p.Id == id);
+            var product = unitOfWork.ProductRepo.Products.SingleOrDefault(p => p.Id == id);
 
             if (product != null)
             {
-                repo.DeleteProduct(product);
+                unitOfWork.ProductRepo.DeleteProduct(product);
+                unitOfWork.Complete();
             }
         }
 
         public IEnumerable<Product> GetAllProducts()
         {
-            return repo.Products.Include(p => p.Category);
+            return unitOfWork.ProductRepo.Products.Include(p => p.Category);
         }
 
         public IEnumerable<Product> GetAllProductsNameContains(string nameContains)
         {
-            return repo.Products.Include(p => p.Category).Where(p => EF.Functions.Like(p.Name, $"%{nameContains}%"));
+            return unitOfWork.ProductRepo.Products.Include(p => p.Category).Where(p => EF.Functions.Like(p.Name, $"%{nameContains}%"));
         }
 
         public IEnumerable<Product> GetProductsNameLikeSkipAndTakeNumber(string nameContains, int skip, int number)
         {
             //return repo.Products.Where(p => p.Name.Contains(nameContains)).Skip(0).Take(number);
-            return repo.Products.Where(p => EF.Functions.Like(p.Name, $"%{nameContains}%")).Skip(0).Take(number);
+            return unitOfWork.ProductRepo.Products.Where(p => EF.Functions.Like(p.Name, $"%{nameContains}%")).Skip(0).Take(number);
         }
 
         public Product GetProductById(int id)
         {
-            return repo.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
+            return unitOfWork.ProductRepo.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetProductsByCategoryName(string categoryName)
         {
-            return repo.Products.Include(p => p.Category).Where(p => p.Category.Name == categoryName);
+            return unitOfWork.ProductRepo.Products.Include(p => p.Category).Where(p => p.Category.Name == categoryName);
         }
 
         public IEnumerable<Product> GetProductsSkipAndTakeNumber(int skip, int number)
         {
-            return repo.Products.Include(p => p.Category).Skip(skip).Take(number);
+            return unitOfWork.ProductRepo.Products.Include(p => p.Category).Skip(skip).Take(number);
         }
 
         public IEnumerable<Product> GetProductsByCategoryNameSkipAndTakeNumber(string categoryName, int skip, int number)
         {
-            return repo.Products.Where(p => p.Category.Name == categoryName).Include(p => p.Category).Skip(skip).Take(number);
+            return unitOfWork.ProductRepo.Products.Where(p => p.Category.Name == categoryName).Include(p => p.Category).Skip(skip).Take(number);
         }
 
         public void UpdateProduct(Product productParam)
         {
-            var product = repo.Products.SingleOrDefault(p => p.Id == productParam.Id);
+            var product = unitOfWork.ProductRepo.Products.SingleOrDefault(p => p.Id == productParam.Id);
 
             if (product == null)
             {
@@ -107,28 +114,29 @@ namespace Ecommwebapi.Data
                 product.Category = productParam.Category;
             }
 
-            repo.SaveProduct(product);
+            //repo.SaveProduct(product);
+            unitOfWork.Complete();
         }
 
         //Categories-----------------------------------
         public IEnumerable<Category> GetAllCategories()
         {
-            return repo.Categories;
+            return unitOfWork.ProductRepo.Categories;
         }
 
         public Category GetCategoryById(int categoryId)
         {
-            return repo.Categories.Where(c => c.Id == categoryId).FirstOrDefault();
+            return unitOfWork.ProductRepo.Categories.Where(c => c.Id == categoryId).FirstOrDefault();
         }
 
         public Category GetCategoryByName(string categoryName)
         {
-            return repo.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
+            return unitOfWork.ProductRepo.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
         }
 
         public Category CreateCategory(Category category)
         {
-            if (repo.Categories.Any(c => c.Name == category.Name))
+            if (unitOfWork.ProductRepo.Categories.Any(c => c.Name == category.Name))
             {
                 throw new AppException("Category name " + category.Name + " is already taken");
             }
@@ -136,14 +144,15 @@ namespace Ecommwebapi.Data
             //autoincrement max id
             //category.Id = repo.Categories.Max(c => c.Id) + 1;
 
-            repo.CreateCategory(category);
+            unitOfWork.ProductRepo.CreateCategory(category);
+            unitOfWork.Complete();
 
             return category;
         }
 
         public void UpdateCategory(Category categoryParam)
         {
-            var category = repo.Categories.SingleOrDefault(c => c.Id == categoryParam.Id);
+            var category = unitOfWork.ProductRepo.Categories.SingleOrDefault(c => c.Id == categoryParam.Id);
 
             if (category == null)
             {
@@ -160,23 +169,25 @@ namespace Ecommwebapi.Data
                 category.Description = categoryParam.Description;
             }
 
-            repo.SaveCategory(category);
+            //repo.SaveCategory(category);
+            unitOfWork.Complete();
         }
 
         public void DeleteCategory(string name)
         {
-            var category = repo.Categories.SingleOrDefault(c => c.Name == name);
+            var category = unitOfWork.ProductRepo.Categories.SingleOrDefault(c => c.Name == name);
 
             if (category != null)
             {
-                repo.DeleteCategory(category);
+                unitOfWork.ProductRepo.DeleteCategory(category);
+                unitOfWork.Complete();
             }
         }
 
         //Cart items-----------------------------------
         public IEnumerable<CartItem> GetAllCartItems()
         {
-            return repo.CartItems.Include(c => c.Product).Include(c => c.User);
+            return unitOfWork.ProductRepo.CartItems.Include(c => c.Product).Include(c => c.User);
         }
 
         //public IEnumerable<CartItem> GetAllCartItemsForUser(User u)
@@ -185,12 +196,12 @@ namespace Ecommwebapi.Data
         //}
         public IEnumerable<CartItem> GetAllCartItemsForUser(int userId)
         {
-            return repo.CartItems.Include(c => c.Product).Include(c => c.User).Where(c => c.User.Id == userId);
+            return unitOfWork.ProductRepo.CartItems.Include(c => c.Product).Include(c => c.User).Where(c => c.User.Id == userId);
         }
 
         public CartItem GetCartItemById(int cartItemId)
         {
-            return repo.CartItems.Include(c => c.Product).Include(c => c.User).Where(c => c.Id == cartItemId).FirstOrDefault();
+            return unitOfWork.ProductRepo.CartItems.Include(c => c.Product).Include(c => c.User).Where(c => c.Id == cartItemId).FirstOrDefault();
         }
 
         public CartItem CreateCartItem(CartItem cartItem)
@@ -205,7 +216,7 @@ namespace Ecommwebapi.Data
                 throw new AppException("Product can not be null");
             }
 
-            if (repo.CartItems.Any(c => c.User.Id == cartItem.User.Id &&
+            if (unitOfWork.ProductRepo.CartItems.Any(c => c.User.Id == cartItem.User.Id &&
                 c.Product.Id == cartItem.Product.Id))
             {
                 throw new AppException("Product " + cartItem.Product.Name +
@@ -221,14 +232,15 @@ namespace Ecommwebapi.Data
             //}
             //cartItem.Id = id;
 
-            repo.CreateCartItem(cartItem);
+            unitOfWork.ProductRepo.CreateCartItem(cartItem);
+            unitOfWork.Complete();
 
             return cartItem;
         }
 
         public void UpdateCartItem(CartItem cartItemParam)
         {
-            var cartItem = repo.CartItems.SingleOrDefault(c => c.Id == cartItemParam.Id);
+            var cartItem = unitOfWork.ProductRepo.CartItems.SingleOrDefault(c => c.Id == cartItemParam.Id);
 
             if (cartItem == null)
             {
@@ -254,42 +266,45 @@ namespace Ecommwebapi.Data
                 throw new AppException(@"Update cartItem.Quantity = {cartItemParam.Quantity}");
             }
 
-            repo.SaveCartItem(cartItem);
+            //repo.SaveCartItem(cartItem);
+            unitOfWork.Complete();
         }
 
         public void DeleteCartItem(int id)
         {
-            CartItem cartItem = repo.CartItems.SingleOrDefault(c => c.Id == id);
+            CartItem cartItem = unitOfWork.ProductRepo.CartItems.SingleOrDefault(c => c.Id == id);
             if (cartItem != null)
             {
-                repo.DeleteCartItem(cartItem);
+                unitOfWork.ProductRepo.DeleteCartItem(cartItem);
+                unitOfWork.Complete();
             }
         }
 
         public void DeleteCartItemRange(IEnumerable<CartItem> cartItems)
         {
-            repo.DeleteCartItemRange(cartItems);
+            unitOfWork.ProductRepo.DeleteCartItemRange(cartItems);
+            unitOfWork.Complete();
         }
 
         //Wishlist items-----------------------------------
         public IEnumerable<WishlistItem> GetAllWishlistItems()
         {
-            return repo.WishlistItems.Include(w => w.Product).Include(w => w.User);
+            return unitOfWork.ProductRepo.WishlistItems.Include(w => w.Product).Include(w => w.User);
         }
 
         public IEnumerable<WishlistItem> GetAllWishlistItemsForUser(int userId)
         {
-            return repo.WishlistItems.Include(w => w.Product).Include(w => w.User).Where(w => w.User.Id == userId);
+            return unitOfWork.ProductRepo.WishlistItems.Include(w => w.Product).Include(w => w.User).Where(w => w.User.Id == userId);
         }
 
         public WishlistItem GetWishlistItemById(int id)
         {
-            return repo.WishlistItems.Include(w => w.Product).Include(w => w.User).Where(w => w.Id == id).SingleOrDefault();
+            return unitOfWork.ProductRepo.WishlistItems.Include(w => w.Product).Include(w => w.User).Where(w => w.Id == id).SingleOrDefault();
         }
 
         public WishlistItem CreateWishlistItem(WishlistItem wishlistItem)
         {
-            if (repo.WishlistItems.Any(w => w.Product.Id == wishlistItem.Product.Id && 
+            if (unitOfWork.ProductRepo.WishlistItems.Any(w => w.Product.Id == wishlistItem.Product.Id && 
                     w.User.Id == wishlistItem.User.Id))
             {
                 throw new AppException("Product " + wishlistItem.Product.Name + " is already in wishlist for this user");
@@ -303,7 +318,8 @@ namespace Ecommwebapi.Data
             //}
             //wishlistItem.Id = id;
 
-            repo.CreateWishlistItem(wishlistItem);
+            unitOfWork.ProductRepo.CreateWishlistItem(wishlistItem);
+            unitOfWork.Complete();
 
             return wishlistItem;
         }
@@ -332,27 +348,28 @@ namespace Ecommwebapi.Data
 
         public void DeleteWishlistItem(int id)
         {
-            WishlistItem wishlistItem = repo.WishlistItems.SingleOrDefault(w => w.Id == id);
+            WishlistItem wishlistItem = unitOfWork.ProductRepo.WishlistItems.SingleOrDefault(w => w.Id == id);
             if (wishlistItem != null)
             {
-                repo.DeleteWishlistItem(wishlistItem);
+                unitOfWork.ProductRepo.DeleteWishlistItem(wishlistItem);
+                unitOfWork.Complete();
             }
         }
 
         //Orders and OrderItems
         public IEnumerable<Order> GetAllOrders()
         {
-            return repo.Orders;
+            return unitOfWork.ProductRepo.Orders;
         }
 
         public IEnumerable<Order> GetAllOrdersForUserId(int userId)
         {
-            return repo.Orders.Where(o => o.User.Id == userId);
+            return unitOfWork.ProductRepo.Orders.Where(o => o.User.Id == userId);
         }
 
         public Order GetOrderById(int orderId)
         {
-            return repo.Orders.Where(o => o.Id == orderId).SingleOrDefault();
+            return unitOfWork.ProductRepo.Orders.Where(o => o.Id == orderId).SingleOrDefault();
         }
 
         public Order CreateOrder(Order order)
@@ -364,38 +381,40 @@ namespace Ecommwebapi.Data
             order.OrderNumber = ("" + order.User.Id + order.OrderDate)
                 .GetHashCode().ToString();
 
-            repo.CreateOrder(order);
+            unitOfWork.ProductRepo.CreateOrder(order);
+            unitOfWork.Complete();
 
             return order;
         }
 
         public void DeleteOrder(int orderId)
         {
-            Order order = repo.Orders.SingleOrDefault(o => o.Id == orderId);
+            Order order = unitOfWork.ProductRepo.Orders.SingleOrDefault(o => o.Id == orderId);
             if (order != null)
             {
-                repo.DeleteOrder(order);
+                unitOfWork.ProductRepo.DeleteOrder(order);
+                unitOfWork.Complete();
             }
         }
 
         public IEnumerable<OrderItem> GetAllOrderItems()
         {
-            return repo.OrderItems;
+            return unitOfWork.ProductRepo.OrderItems;
         }
 
         public IEnumerable<OrderItem> GetAllOrderItemsForUserId(int userId)
         {
-            return repo.OrderItems.Where(o => o.Order.User.Id == userId);
+            return unitOfWork.ProductRepo.OrderItems.Where(o => o.Order.User.Id == userId);
         }
 
         public IEnumerable<OrderItem> GetAllOrderItemsForOrderId(int orderId)
         {
-            return repo.OrderItems.Where(o => o.Order.Id == orderId);
+            return unitOfWork.ProductRepo.OrderItems.Where(o => o.Order.Id == orderId);
         }
 
         public OrderItem GetOrderItemById(int orderItemId)
         {
-            return repo.OrderItems.Where(o => o.Id == orderItemId).SingleOrDefault();
+            return unitOfWork.ProductRepo.OrderItems.Where(o => o.Id == orderItemId).SingleOrDefault();
         }
 
         public OrderItem CreateOrderItem(OrderItem orderItem)
@@ -410,7 +429,7 @@ namespace Ecommwebapi.Data
                 throw new AppException("Product can not be null");
             }
 
-            if (repo.OrderItems.Any(o => o.Product.Id == orderItem.Product.Id &&
+            if (unitOfWork.ProductRepo.OrderItems.Any(o => o.Product.Id == orderItem.Product.Id &&
                 o.Order.Id == orderItem.Order.Id))
             {
                 throw new AppException("Already have OrderItem with same Order and Product");
@@ -419,23 +438,26 @@ namespace Ecommwebapi.Data
             //autoincrement max id
             //orderItem.Id = repo.OrderItems.Max(c => c.Id) + 1;
 
-            repo.CreateOrderItem(orderItem);
+            unitOfWork.ProductRepo.CreateOrderItem(orderItem);
+            unitOfWork.Complete();
 
             return orderItem;
         }
 
         public void DeleteOrderItem(int orderItemId)
         {
-            OrderItem orderItem = repo.OrderItems.SingleOrDefault(o => o.Id == orderItemId);
+            OrderItem orderItem = unitOfWork.ProductRepo.OrderItems.SingleOrDefault(o => o.Id == orderItemId);
             if (orderItem != null)
             {
-                repo.DeleteOrderItem(orderItem);
+                unitOfWork.ProductRepo.DeleteOrderItem(orderItem);
+                unitOfWork.Complete();
             }
         }
 
         public void DeleteOrderItemRange(IEnumerable<OrderItem> orderItems)
         {
-            repo.DeleteOrderItemRange(orderItems);
+            unitOfWork.ProductRepo.DeleteOrderItemRange(orderItems);
+            unitOfWork.Complete();
         }
     }
 }

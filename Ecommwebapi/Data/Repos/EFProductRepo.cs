@@ -22,13 +22,13 @@ namespace Ecommwebapi.Data
         public void CreateProduct(Product p)
         {
             ctx.Products.Add(p);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteProduct(Product p)
         {
             ctx.Products.Remove(p);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void SaveProduct(Product p)
@@ -42,18 +42,18 @@ namespace Ecommwebapi.Data
         public void CreateCategory(Category c)
         {
             ctx.Categories.Add(c);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteCategory(Category c)
         {
             ctx.Categories.Remove(c);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void SaveCategory(Category c)
         {
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         //Cart items
@@ -62,13 +62,13 @@ namespace Ecommwebapi.Data
         public void CreateCartItem(CartItem c)
         {
             ctx.CartItems.Add(c);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteCartItem(CartItem c)
         {
             ctx.CartItems.Remove(c);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void SaveCartItem(CartItem c)
@@ -79,7 +79,7 @@ namespace Ecommwebapi.Data
         public void DeleteCartItemRange(IEnumerable<CartItem> c)
         {
             ctx.CartItems.RemoveRange(c);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         //Wishlists
@@ -88,13 +88,13 @@ namespace Ecommwebapi.Data
         public void CreateWishlistItem(WishlistItem w)
         {
             ctx.WishlistItems.Add(w);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteWishlistItem(WishlistItem w)
         {
             ctx.WishlistItems.Remove(w);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void SaveWishlistItem(WishlistItem w)
@@ -109,31 +109,31 @@ namespace Ecommwebapi.Data
         public void CreateOrder(Order o)
         {
             ctx.Orders.Add(o);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void CreateOrderItem(OrderItem o)
         {
             ctx.OrderItems.Add(o);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteOrder(Order o)
         {
             ctx.Orders.Remove(o);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteOrderItem(OrderItem o)
         {
             ctx.OrderItems.Remove(o);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void DeleteOrderItemRange(IEnumerable<OrderItem> o)
         {
             ctx.OrderItems.RemoveRange(o);
-            ctx.SaveChanges();
+            //ctx.SaveChanges();
         }
 
         public void SaveOrder(Order o)
